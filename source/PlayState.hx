@@ -433,6 +433,8 @@ class PlayState extends MusicBeatState
 		GameOverSubstate.resetVariables();
 		var songName:String = Paths.formatToSongPath(SONG.song);
 
+		
+
 		curStage = SONG.stage;
 		//trace('stage is: ' + curStage);
 		if(SONG.stage == null || SONG.stage.length < 1) {
@@ -454,9 +456,103 @@ class PlayState extends MusicBeatState
 					curStage = 'schoolEvil';
 				case 'ugh' | 'guns' | 'stress':
 					curStage = 'tank';
+				case 'house' | 'insanity' | 'supernovae' | 'old-supernovae' | 'warmup' | 'threedimensional' | 'second-tristan-song' |
+				'house-2.5' | 'insanity-2.5' | 'roots' | 'vs-dave-thanksgiving':
+					stageCheck = 'house';
+				case 'polygonized' | 'polygonized-2.5' | 'furiosity':
+					stageCheck = 'red-void';
+				case 'bonus-song':
+					stageCheck = 'inside-house';
+				case 'blocked' | 'corn-theft' | 'maze':
+					stageCheck = 'farm';
+				case 'indignancy':
+					stageCheck = 'farm-night';
+				case 'splitathon' | 'mealie' | 'old-splitathon':
+					stageCheck = 'farm-night';
+				case 'shredder' | 'greetings':
+					stageCheck = 'festival';
+				case 'interdimensional':
+					stageCheck = 'interdimension-void';
+				case 'rano':
+					stageCheck = 'backyard';
+				case 'cheating' | 'oppression' | 'importumania':
+					stageCheck = 'green-void';
+				case 'unfairness':
+					stageCheck = 'glitchy-void';
+				case 'exploitation':
+					stageCheck = 'desktop';
+				case 'kabunga':
+					stageCheck = 'exbungo-land';
+				case 'glitch' | 'memory'  | 'old-glitch' | 'bonus-song-2.5':
+					stageCheck = 'house-night';
+				case 'secret':
+					stageCheck = 'house-sunset';
+				case 'vs-dave-rap' | 'vs-dave-rap-two':
+					stageCheck = 'rapBattle';
+				case 'recursed':
+					stageCheck = 'freeplay';
+				case 'roofs':
+					stageCheck = 'roof';
+				case 'bot-trot':
+					stageCheck = 'bedroom';
+				case 'escape-from-california':
+					stageCheck = 'desert';
+				case 'master':
+					stageCheck = 'master';
+				case 'overdrive':
+					stageCheck = 'overdrive';
+				case 'bananacore' | 'electric-cockaldoodledoo' | 'eletric-cockadoodledoo':
+					stageCheck = 'banana-hell';
+				case 'old-house' | 'old-insanity':
+					stageCheck = 'house-older';
+				case 'beta-maze':
+					stageCheck = 'farm-sunset-2.5';
+				case 'old-screwed' | 'screwed-v2' | 'beta-Maze':
+					stageCheck = 'farm-2.5';
+				case 'super-saiyan':
+					stageCheck = 'stage_2';
+				case 'bonkers':
+					stageCheck = 'garrettLand';
+				case 'old-blocked' | 'Old-Corn-Theft' | 'old-maze':
+					stageCheck = 'old-farm';
+				case 'blocked-2.5' | 'corn-theft-2.5':
+					stageCheck = 'scrapped-farm';
+				case 'maze-2.5':
+					stageCheck = 'scrapped-farm-sunset';
+				case 'foolhardy':
+					stageCheck = 'fuckyouZardyTime';
 				default:
 					curStage = 'stage';
 			}
+		}
+		else
+		{
+			stageCheck = SONG.stage;
+		}
+		backgroundSprites = createBackgroundSprites(stageCheck, false);
+		switch (SONG.song.toLowerCase())
+		{
+			case 'secret':
+				UsingNewCam = true;
+		}
+		switch (SONG.song.toLowerCase())
+		{
+			case 'polygonized' | 'interdimensional':
+				var stage = SONG.song.toLowerCase() != 'interdimensional' ? 'house-night' : 'festival';
+				revertedBG = createBackgroundSprites(stage, true);
+				for (bgSprite in revertedBG)
+				{
+					bgSprite.color = getBackgroundColor(SONG.song.toLowerCase() != 'interdimensional' ? 'daveHouse_night' : 'festival');
+					bgSprite.alpha = 0;
+				}
+			case 'polygonized-2.5':
+				var stage = 'house-night';
+				revertedBG = createBackgroundSprites(stage, true);
+				for (bgSprite in revertedBG)
+				{
+					bgSprite.color = getBackgroundColor('daveHouse_night');
+					bgSprite.alpha = 0;
+				}
 		}
 		SONG.stage = curStage;
 
@@ -3146,6 +3242,45 @@ class PlayState extends MusicBeatState
 		}
 	}
 
+	function playCutscene(name:String)
+	{
+		inCutscene = true;
+		FlxG.sound.music.stop();
+	
+		video = new MP4Handler();
+		video.finishCallback = function()
+		{
+			switch (curSong.toLowerCase())
+			{
+				case 'house':
+					var doof:DialogueBox = new DialogueBox(false, dialogue, isStoryMode);
+					// doof.x += 70;
+					// doof.y = FlxG.height * 0.5;
+	    			doof.scrollFactor.set();
+					doof.finishThing = startCountdown;
+					schoolIntro(doof);
+				default:
+					startCountdown();
+			}
+		}
+		video.playVideo(Paths.video(name));
+	}
+	
+	function playEndCutscene(name:String)
+	{
+		inCutscene = true;
+	
+		video = new MP4Handler();
+		video.finishCallback = function()
+		{
+			LoadingState.loadAndSwitchState(new PlayState());
+		}
+		video.playVideo(Paths.video(name));
+	}
+	
+	var previousFrameTime:Int = 0;
+	var songTime:Float = 0;
+
 	public function addBehindGF(obj:FlxObject)
 	{
 		insert(members.indexOf(gfGroup), obj);
@@ -3288,6 +3423,61 @@ class PlayState extends MusicBeatState
 				{
 					spr.dance();
 				});
+			case 'escape-from-california':
+				dad.canSing = false;
+				dad.canDance = false;
+				dad.playAnim('helpMe', true);
+				dad.animation.finishCallback = function(anim:String)
+				{
+					dad.canSing = true;
+					dad.canDance = true;
+				}
+				FlxTween.num(0, 30, 2, {}, function(newValue:Float)
+				{
+					trainSpeed = newValue;
+					train.animation.curAnim.frameRate = Std.int(FlxMath.lerp(0, 24, (trainSpeed / 30)));
+				});
+			case 'supernovae' | 'glitch' | 'master':
+				Application.current.window.title = banbiWindowNames[new FlxRandom().int(0, banbiWindowNames.length - 1)];
+			case 'exploitation':
+				blackScreen = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+				blackScreen.cameras = [camHUD];
+				blackScreen.screenCenter();
+				blackScreen.scrollFactor.set();
+				blackScreen.alpha = 0;
+				add(blackScreen);
+					
+				Application.current.window.title = "[DATA EXPUNGED]";
+				Application.current.window.setIcon(lime.graphics.Image.fromFile("art/icons/iconAAAA.png"));
+			case 'vs-dave-rap' | 'vs-dave-rap-two':
+				FlxTween.tween(blackScreen, {alpha: 0}, 3, {onComplete: function(tween:FlxTween)
+				{
+					remove(blackScreen);
+				}});
+			case 'five-nights':
+				FlxG.mouse.visible = true;
+			case 'greetings':
+				if (isGreetingsCutscene)
+				{
+					generatedMusic = false;
+					vocals.stop();
+					vocals.volume = 0;
+					FlxG.sound.music.onComplete = null;
+					FlxG.sound.music.stop();
+					for (note in unspawnNotes)
+					{
+						unspawnNotes.remove(note);
+					}
+					greetingsCutscene();
+				}
+			case 'indignancy':
+				vignette = new FlxSprite().loadGraphic(Paths.image('vignette'));
+				vignette.screenCenter();
+				vignette.scrollFactor.set();
+				vignette.cameras = [camHUD];
+				vignette.alpha = 0;
+				add(vignette);
+				FlxTween.tween(vignette, {alpha: 0.7}, 1);
 		}
 
 		#if desktop
