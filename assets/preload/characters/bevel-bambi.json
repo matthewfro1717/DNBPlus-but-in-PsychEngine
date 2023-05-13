@@ -1,0 +1,210 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-5,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "MARCELLO idle dance"
+		},
+		{
+			"offsets": [
+				-13,
+				-35
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "MARCELLO NOTE DOWN0"
+		},
+		{
+			"offsets": [
+				14,
+				57
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "MARCELLO NOTE UP0"
+		},
+		{
+			"offsets": [
+				-36,
+				12
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "MARCELLO NOTE LEFT MISS"
+		},
+		{
+			"offsets": [
+				-8,
+				-9
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "MARCELLO NOTE DOWN MISS"
+		},
+		{
+			"offsets": [
+				15,
+				57
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "MARCELLO NOTE UP MISS"
+		},
+		{
+			"offsets": [
+				47,
+				31
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "MARCELLO NOTE RIGHT MISS"
+		},
+		{
+			"offsets": [
+				-6,
+				21
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "hey",
+			"indices": [],
+			"name": "MARCELLO HEY!!"
+		},
+		{
+			"offsets": [
+				15,
+				18
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "hurt",
+			"indices": [],
+			"name": "MARCELLO hit"
+		},
+		{
+			"offsets": [
+				2,
+				8
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "scared",
+			"indices": [],
+			"name": "MARCELLO idle shaking"
+		},
+		{
+			"offsets": [
+				-10,
+				22
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "firstDeath",
+			"indices": [],
+			"name": "MARCELLO dies"
+		},
+		{
+			"offsets": [
+				-9,
+				23
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "deathLoop",
+			"indices": [],
+			"name": "MARCELLO Dead Loop"
+		},
+		{
+			"offsets": [
+				-10,
+				-16
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "dodge",
+			"indices": [],
+			"name": "boyfriend dodge"
+		},
+		{
+			"offsets": [
+				294,
+				267
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "attack",
+			"indices": [],
+			"name": "boyfriend attack"
+		},
+		{
+			"offsets": [
+				-40,
+				-40
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "pre-attack",
+			"indices": [],
+			"name": "MARCELLO pre attack"
+		},
+		{
+			"offsets": [
+				-28,
+				-7
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "MARCELLO NOTE LEFT0"
+		},
+		{
+			"offsets": [
+				44,
+				8
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "MARCELLO NOTE RIGHT0"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bevel_bambi",
+	"position": [
+		0,
+		350
+	],
+	"healthicon": "bevel",
+	"flip_x": true,
+	"healthbar_colors": [
+		0,
+		255,
+		0
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

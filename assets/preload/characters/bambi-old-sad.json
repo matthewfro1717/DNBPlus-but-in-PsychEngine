@@ -1,128 +1,117 @@
 {
 	"animations": [
 		{
-			"offsets": [
-				-3,
-				-1
-			],
 			"loop": false,
-			"anim": "idle",
-			"fps": 24,
-			"name": "BF idle dance",
-			"indices": []
-		},
-		{
 			"offsets": [
-				-13,
-				-8
+				30,
+				0
 			],
-			"loop": false,
 			"anim": "singLEFT",
 			"fps": 24,
-			"name": "BF NOTE LEFT0",
+			"name": "MARCELLO NOTE LEFT0",
 			"indices": []
 		},
 		{
-			"offsets": [
-				10,
-				-53
-			],
 			"loop": false,
+			"offsets": [
+				34,
+				-15
+			],
 			"anim": "singDOWN",
 			"fps": 24,
-			"name": "BF NOTE DOWN0",
+			"name": "MARCELLO NOTE DOWN0",
 			"indices": []
 		},
 		{
-			"offsets": [
-				25,
-				27
-			],
 			"loop": false,
+			"offsets": [
+				46,
+				3
+			],
 			"anim": "singUP",
 			"fps": 24,
-			"name": "BF NOTE UP0",
+			"name": "MARCELLO NOTE UP0",
 			"indices": []
 		},
 		{
-			"offsets": [
-				43,
-				-6
-			],
 			"loop": false,
+			"offsets": [
+				19,
+				-3
+			],
 			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "BF NOTE RIGHT0",
+			"name": "MARCELLO NOTE RIGHT0",
 			"indices": []
 		},
 		{
-			"offsets": [
-				-11,
-				14
-			],
 			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
 			"anim": "singLEFTmiss",
 			"fps": 24,
-			"name": "BF NOTE LEFT MISS",
+			"name": "MARCELLO NOTE LEFT MISS",
 			"indices": []
 		},
 		{
-			"offsets": [
-				17,
-				-20
-			],
 			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
 			"anim": "singDOWNmiss",
 			"fps": 24,
-			"name": "BF NOTE DOWN MISS",
+			"name": "MARCELLO NOTE DOWN MISS",
 			"indices": []
 		},
 		{
-			"offsets": [
-				28,
-				21
-			],
 			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
 			"anim": "singUPmiss",
 			"fps": 24,
-			"name": "BF NOTE UP MISS",
+			"name": "MARCELLO NOTE UP MISS",
 			"indices": []
 		},
 		{
-			"offsets": [
-				31,
-				18
-			],
 			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
 			"anim": "singRIGHTmiss",
 			"fps": 24,
-			"name": "BF NOTE RIGHT MISS",
+			"name": "MARCELLO NOTE RIGHT MISS",
 			"indices": []
 		},
 		{
 			"offsets": [
-				-6,
-				4
+				0,
+				0
 			],
-			"loop": false,
-			"anim": "hey",
+			"indices": [],
 			"fps": 24,
-			"name": "BF HEY",
-			"indices": []
+			"anim": "idle",
+			"loop": true,
+			"name": "MARCELLO idle dance"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/bfChristmas",
+	"image": "dave/bambi-old-sad",
 	"position": [
 		0,
 		350
 	],
-	"healthicon": "bf",
+	"healthicon": "oldBambi-ICON",
 	"flip_x": true,
 	"healthbar_colors": [
-		49,
-		176,
-		209
+		12,
+		181,
+		0
 	],
 	"camera_position": [
 		0,

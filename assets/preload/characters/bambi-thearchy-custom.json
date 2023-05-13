@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [
+				-1,
+				0
+			],
+			"anim": "idle",
+			"fps": 15,
+			"name": "Idle",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-33,
+				-60
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "Left"
+		},
+		{
+			"offsets": [
+				-90,
+				-100
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Down"
+		},
+		{
+			"offsets": [
+				-30,
+				151
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "Up"
+		},
+		{
+			"offsets": [
+				-40,
+				-60
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Right"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "bambi/thearchy_bambi",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "ThearExpunged",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		255,
+		255
+	],
+	"camera_position": [
+		-40,
+		-240
+	],
+	"sing_duration": 4,
+	"scale": 1.3
+}

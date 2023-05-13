@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				-78,
+				-454
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Idle0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-75,
+				-452
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Left0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-110,
+				-464
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Right0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-88,
+				-443
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Up0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-81,
+				-476
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Down0",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "splitathon/OH_MY_GOD_MARCELLO_REAL",
+	"position": [
+		150,
+		0
+	],
+	"healthicon": "funny_marcello",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		180,
+		0
+	],
+	"camera_position": [
+		80,
+		400
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

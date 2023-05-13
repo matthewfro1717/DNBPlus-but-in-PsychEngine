@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				121,
+				106
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "u ",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				128,
+				104
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "r ",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				115,
+				101
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "l ",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				119,
+				105
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "d ",
+			"indices": []
+		},
+		{
+			"offsets": [
+				124,
+				101
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "i "
+		}
+	],
+	"no_antialiasing": false,
+	"image": "splitathon/coolbambi",
+	"position": [
+		330,
+		450
+	],
+	"healthicon": "bambi-1.0",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		255,
+		0
+	],
+	"camera_position": [
+		-269,
+		10
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

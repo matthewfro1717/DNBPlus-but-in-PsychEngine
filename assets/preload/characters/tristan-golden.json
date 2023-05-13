@@ -3,7 +3,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				-5,
+				0,
 				0
 			],
 			"anim": "idle",
@@ -14,8 +14,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				-22,
-				-6
+				9,
+				-25
 			],
 			"anim": "singLEFT",
 			"fps": 24,
@@ -25,8 +25,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				0,
-				-50
+				-3,
+				-37
 			],
 			"anim": "singDOWN",
 			"fps": 24,
@@ -36,8 +36,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				27,
-				27
+				73,
+				26
 			],
 			"anim": "singUP",
 			"fps": 24,
@@ -47,8 +47,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				28,
-				-5
+				60,
+				-28
 			],
 			"anim": "singRIGHT",
 			"fps": 24,
@@ -58,8 +58,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				-23,
-				20
+				4,
+				-10
 			],
 			"anim": "singLEFTmiss",
 			"fps": 24,
@@ -69,8 +69,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				8,
-				-24
+				41,
+				-35
 			],
 			"anim": "singDOWNmiss",
 			"fps": 24,
@@ -80,8 +80,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				23,
-				20
+				74,
+				31
 			],
 			"anim": "singUPmiss",
 			"fps": 24,
@@ -91,8 +91,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				29,
-				20
+				56,
+				-19
 			],
 			"anim": "singRIGHTmiss",
 			"fps": 24,
@@ -102,8 +102,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				-17,
-				5
+				-24,
+				40
 			],
 			"anim": "hey",
 			"fps": 24,
@@ -113,8 +113,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				15,
-				18
+				-14,
+				-23
 			],
 			"anim": "hurt",
 			"fps": 24,
@@ -124,8 +124,8 @@
 		{
 			"loop": true,
 			"offsets": [
-				-15,
-				0
+				-1,
+				-19
 			],
 			"anim": "scared",
 			"fps": 24,
@@ -135,8 +135,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				35,
-				11
+				12,
+				-16
 			],
 			"anim": "firstDeath",
 			"fps": 24,
@@ -146,8 +146,8 @@
 		{
 			"loop": true,
 			"offsets": [
-				37,
-				5
+				7,
+				-16
 			],
 			"anim": "deathLoop",
 			"fps": 24,
@@ -157,8 +157,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				37,
-				69
+				7,
+				18
 			],
 			"anim": "deathConfirm",
 			"fps": 24,
@@ -168,8 +168,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				-10,
-				-16
+				5,
+				21
 			],
 			"anim": "dodge",
 			"fps": 24,
@@ -179,8 +179,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				294,
-				267
+				265,
+				237
 			],
 			"anim": "attack",
 			"fps": 24,
@@ -200,17 +200,17 @@
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/BOYFRIEND_remaster",
+	"image": "dave/tristan_golden",
 	"position": [
 		0,
 		350
 	],
-	"healthicon": "bf",
+	"healthicon": "tristan-golden",
 	"flip_x": true,
 	"healthbar_colors": [
-		49,
-		176,
-		209
+		255,
+		208,
+		0
 	],
 	"camera_position": [
 		0,

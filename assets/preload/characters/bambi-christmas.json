@@ -2,19 +2,8 @@
 	"animations": [
 		{
 			"offsets": [
-				-3,
-				-1
-			],
-			"loop": false,
-			"anim": "idle",
-			"fps": 24,
-			"name": "BF idle dance",
-			"indices": []
-		},
-		{
-			"offsets": [
-				-13,
-				-8
+				23,
+				-9
 			],
 			"loop": false,
 			"anim": "singLEFT",
@@ -24,8 +13,8 @@
 		},
 		{
 			"offsets": [
-				10,
-				-53
+				-30,
+				-68
 			],
 			"loop": false,
 			"anim": "singDOWN",
@@ -35,8 +24,8 @@
 		},
 		{
 			"offsets": [
-				25,
-				27
+				-48,
+				11
 			],
 			"loop": false,
 			"anim": "singUP",
@@ -46,8 +35,8 @@
 		},
 		{
 			"offsets": [
-				43,
-				-6
+				-15,
+				-17
 			],
 			"loop": false,
 			"anim": "singRIGHT",
@@ -57,8 +46,8 @@
 		},
 		{
 			"offsets": [
-				-11,
-				14
+				12,
+				12
 			],
 			"loop": false,
 			"anim": "singLEFTmiss",
@@ -68,8 +57,8 @@
 		},
 		{
 			"offsets": [
-				17,
-				-20
+				-18,
+				-41
 			],
 			"loop": false,
 			"anim": "singDOWNmiss",
@@ -79,8 +68,8 @@
 		},
 		{
 			"offsets": [
-				28,
-				21
+				-45,
+				7
 			],
 			"loop": false,
 			"anim": "singUPmiss",
@@ -90,8 +79,8 @@
 		},
 		{
 			"offsets": [
-				31,
-				18
+				-18,
+				20
 			],
 			"loop": false,
 			"anim": "singRIGHTmiss",
@@ -101,28 +90,39 @@
 		},
 		{
 			"offsets": [
-				-6,
-				4
+				17,
+				-5
 			],
 			"loop": false,
 			"anim": "hey",
 			"fps": 24,
 			"name": "BF HEY",
 			"indices": []
+		},
+		{
+			"offsets": [
+				-3,
+				-1
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": true,
+			"name": "BF idle dance"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/bfChristmas",
+	"image": "bambi/bambiChristmas",
 	"position": [
 		0,
 		350
 	],
-	"healthicon": "bf",
+	"healthicon": "bevel_a9",
 	"flip_x": true,
 	"healthbar_colors": [
-		49,
-		176,
-		209
+		0,
+		255,
+		0
 	],
 	"camera_position": [
 		0,

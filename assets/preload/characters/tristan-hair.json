@@ -1,128 +1,117 @@
 {
 	"animations": [
 		{
-			"offsets": [
-				-3,
-				-1
-			],
 			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
 			"anim": "idle",
 			"fps": 24,
 			"name": "BF idle dance",
 			"indices": []
 		},
 		{
-			"offsets": [
-				-13,
-				-8
-			],
 			"loop": false,
+			"offsets": [
+				10,
+				-3
+			],
 			"anim": "singLEFT",
 			"fps": 24,
 			"name": "BF NOTE LEFT0",
 			"indices": []
 		},
 		{
-			"offsets": [
-				10,
-				-53
-			],
 			"loop": false,
+			"offsets": [
+				52,
+				-25
+			],
 			"anim": "singDOWN",
 			"fps": 24,
 			"name": "BF NOTE DOWN0",
 			"indices": []
 		},
 		{
-			"offsets": [
-				25,
-				27
-			],
 			"loop": false,
+			"offsets": [
+				80,
+				47
+			],
 			"anim": "singUP",
 			"fps": 24,
 			"name": "BF NOTE UP0",
 			"indices": []
 		},
 		{
-			"offsets": [
-				43,
-				-6
-			],
 			"loop": false,
+			"offsets": [
+				64,
+				-9
+			],
 			"anim": "singRIGHT",
 			"fps": 24,
 			"name": "BF NOTE RIGHT0",
 			"indices": []
 		},
 		{
-			"offsets": [
-				-11,
-				14
-			],
 			"loop": false,
+			"offsets": [
+				5,
+				12
+			],
 			"anim": "singLEFTmiss",
 			"fps": 24,
 			"name": "BF NOTE LEFT MISS",
 			"indices": []
 		},
 		{
-			"offsets": [
-				17,
-				-20
-			],
 			"loop": false,
+			"offsets": [
+				45,
+				-12
+			],
 			"anim": "singDOWNmiss",
 			"fps": 24,
 			"name": "BF NOTE DOWN MISS",
 			"indices": []
 		},
 		{
-			"offsets": [
-				28,
-				21
-			],
 			"loop": false,
+			"offsets": [
+				77,
+				53
+			],
 			"anim": "singUPmiss",
 			"fps": 24,
 			"name": "BF NOTE UP MISS",
 			"indices": []
 		},
 		{
-			"offsets": [
-				31,
-				18
-			],
 			"loop": false,
+			"offsets": [
+				59,
+				1
+			],
 			"anim": "singRIGHTmiss",
 			"fps": 24,
 			"name": "BF NOTE RIGHT MISS",
 			"indices": []
-		},
-		{
-			"offsets": [
-				-6,
-				4
-			],
-			"loop": false,
-			"anim": "hey",
-			"fps": 24,
-			"name": "BF HEY",
-			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/bfChristmas",
+	"image": "dave/tristan_hair",
 	"position": [
 		0,
 		350
 	],
-	"healthicon": "bf",
+	"healthicon": "tristan-hair",
 	"flip_x": true,
 	"healthbar_colors": [
-		49,
-		176,
-		209
+		255,
+		0,
+		0
 	],
 	"camera_position": [
 		0,

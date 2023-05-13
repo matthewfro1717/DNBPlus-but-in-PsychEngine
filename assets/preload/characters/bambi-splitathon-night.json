@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-78,
+				-454
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "Idle0"
+		},
+		{
+			"offsets": [
+				-105,
+				-452
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "Left0"
+		},
+		{
+			"offsets": [
+				-130,
+				-462
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Right0"
+		},
+		{
+			"offsets": [
+				-117,
+				-440
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "Up0"
+		},
+		{
+			"offsets": [
+				-119,
+				-471
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Down0"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "splitathon/Splitathon_Bambi_Night",
+	"position": [
+		150,
+		0
+	],
+	"healthicon": "bamber",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		180,
+		0
+	],
+	"camera_position": [
+		80,
+		400
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

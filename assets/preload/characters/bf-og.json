@@ -14,8 +14,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				-22,
-				-6
+				-12,
+				-8
 			],
 			"anim": "singLEFT",
 			"fps": 24,
@@ -25,7 +25,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				0,
+				16,
 				-50
 			],
 			"anim": "singDOWN",
@@ -36,7 +36,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				27,
+				34,
 				27
 			],
 			"anim": "singUP",
@@ -47,8 +47,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				28,
-				-5
+				39,
+				-7
 			],
 			"anim": "singRIGHT",
 			"fps": 24,
@@ -58,8 +58,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				-23,
-				20
+				-13,
+				18
 			],
 			"anim": "singLEFTmiss",
 			"fps": 24,
@@ -69,8 +69,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				8,
-				-24
+				13,
+				-21
 			],
 			"anim": "singDOWNmiss",
 			"fps": 24,
@@ -80,7 +80,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				23,
+				24,
 				20
 			],
 			"anim": "singUPmiss",
@@ -91,8 +91,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				29,
-				20
+				33,
+				19
 			],
 			"anim": "singRIGHTmiss",
 			"fps": 24,
@@ -102,7 +102,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				-17,
+				-7,
 				5
 			],
 			"anim": "hey",
@@ -113,8 +113,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				15,
-				18
+				-21,
+				19
 			],
 			"anim": "hurt",
 			"fps": 24,
@@ -124,7 +124,7 @@
 		{
 			"loop": true,
 			"offsets": [
-				-15,
+				-4,
 				0
 			],
 			"anim": "scared",
@@ -135,8 +135,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				35,
-				11
+				-31,
+				7
 			],
 			"anim": "firstDeath",
 			"fps": 24,
@@ -146,8 +146,8 @@
 		{
 			"loop": true,
 			"offsets": [
-				37,
-				5
+				-31,
+				1
 			],
 			"anim": "deathLoop",
 			"fps": 24,
@@ -157,8 +157,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				37,
-				69
+				-31,
+				65
 			],
 			"anim": "deathConfirm",
 			"fps": 24,
@@ -168,8 +168,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				-10,
-				-16
+				-9,
+				-9
 			],
 			"anim": "dodge",
 			"fps": 24,
@@ -179,8 +179,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				294,
-				267
+				-305,
+				271
 			],
 			"anim": "attack",
 			"fps": 24,
@@ -190,7 +190,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				-40,
+				20,
 				-40
 			],
 			"anim": "pre-attack",
@@ -200,7 +200,7 @@
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/BOYFRIEND_remaster",
+	"image": "characters/BOYFRIEND",
 	"position": [
 		0,
 		350

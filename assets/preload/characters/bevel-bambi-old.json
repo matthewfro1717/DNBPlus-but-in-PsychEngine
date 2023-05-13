@@ -8,106 +8,84 @@
 			],
 			"anim": "idle",
 			"fps": 24,
-			"name": "BF idle dance",
+			"name": "MARCELLO idle dance",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				-22,
-				-6
-			],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "BF NOTE LEFT0",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				-50
+				-53,
+				-75
 			],
 			"anim": "singDOWN",
 			"fps": 24,
-			"name": "BF NOTE DOWN0",
+			"name": "MARCELLO NOTE DOWN0",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				27,
-				27
+				10,
+				-7
 			],
 			"anim": "singUP",
 			"fps": 24,
-			"name": "BF NOTE UP0",
+			"name": "MARCELLO NOTE UP0",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				28,
-				-5
-			],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "BF NOTE RIGHT0",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-23,
-				20
+				-26,
+				-44
 			],
 			"anim": "singLEFTmiss",
 			"fps": 24,
-			"name": "BF NOTE LEFT MISS",
+			"name": "MARCELLO NOTE LEFT MISS",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				8,
-				-24
+				-53,
+				-67
 			],
 			"anim": "singDOWNmiss",
 			"fps": 24,
-			"name": "BF NOTE DOWN MISS",
+			"name": "MARCELLO NOTE DOWN MISS",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				23,
-				20
+				20,
+				1
 			],
 			"anim": "singUPmiss",
 			"fps": 24,
-			"name": "BF NOTE UP MISS",
+			"name": "MARCELLO NOTE UP MISS",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				29,
-				20
+				45,
+				-37
 			],
 			"anim": "singRIGHTmiss",
 			"fps": 24,
-			"name": "BF NOTE RIGHT MISS",
+			"name": "MARCELLO NOTE RIGHT MISS",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				-17,
-				5
+				-6,
+				21
 			],
 			"anim": "hey",
 			"fps": 24,
-			"name": "BF HEY",
+			"name": "MARCELLO HEY!!",
 			"indices": []
 		},
 		{
@@ -118,51 +96,40 @@
 			],
 			"anim": "hurt",
 			"fps": 24,
-			"name": "BF hit",
+			"name": "MARCELLO hit",
 			"indices": []
 		},
 		{
 			"loop": true,
 			"offsets": [
-				-15,
-				0
+				2,
+				8
 			],
 			"anim": "scared",
 			"fps": 24,
-			"name": "BF idle shaking",
+			"name": "MARCELLO idle shaking",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				35,
-				11
+				-10,
+				22
 			],
 			"anim": "firstDeath",
 			"fps": 24,
-			"name": "BF dies",
+			"name": "MARCELLO dies",
 			"indices": []
 		},
 		{
 			"loop": true,
 			"offsets": [
-				37,
-				5
+				-9,
+				23
 			],
 			"anim": "deathLoop",
 			"fps": 24,
-			"name": "BF Dead Loop",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				37,
-				69
-			],
-			"anim": "deathConfirm",
-			"fps": 24,
-			"name": "BF Dead confirm",
+			"name": "MARCELLO Dead Loop",
 			"indices": []
 		},
 		{
@@ -195,22 +162,44 @@
 			],
 			"anim": "pre-attack",
 			"fps": 24,
-			"name": "bf pre attack",
+			"name": "MARCELLO pre attack",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-28,
+				-47
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "MARCELLO NOTE LEFT0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				44,
+				-36
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "MARCELLO NOTE RIGHT0",
 			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/BOYFRIEND_remaster",
+	"image": "bambi/bevel_bambi_old",
 	"position": [
 		0,
 		350
 	],
-	"healthicon": "bf",
+	"healthicon": "bevel",
 	"flip_x": true,
 	"healthbar_colors": [
-		49,
-		176,
-		209
+		0,
+		255,
+		0
 	],
 	"camera_position": [
 		0,
