@@ -4630,11 +4630,81 @@ class PlayState extends MusicBeatState
 							daNote.y += 27.5 * ((SONG.bpm / 100) - 1) * (songSpeed - 1) * Note.scales[mania];
 						}
 					}
+				if (!daNote.mustPress && daNote.wasGoodHit && !daNote.hitByOpponent)
+				{
+					if (SONG.song != 'Warmup')
+						camZooming = true; 
 
-					if (!daNote.mustPress && daNote.wasGoodHit && !daNote.hitByOpponent && !daNote.ignoreNote)
+					var altAnim:String = "";
+					var healthtolower:Float = 0.02;
+
+					if (currentSection != null)
 					{
-						opponentNoteHit(daNote);
+						if (daNote.noteStyle == 'phone-alt')
+						{
+							altAnim = '-alt';
+						}
+						if (currentSection.altAnim)
+							if (SONG.song.toLowerCase() != "cheating")
+							{
+								altAnim = '-alt';
+							}
+							else
+							{
+								healthtolower = 0.005;
+							}
 					}
+					if (inFiveNights && !daNote.isSustainNote)
+					{
+						dadCombo++;
+						createScorePopUp(0, 0, true, FlxG.random.int(0,10) == 0 ? "good" : "sick", dadCombo, "3D");
+					}
+
+					var noteTypes = guitarSection ? notestuffsGuitar : notestuffs;
+					var noteToPlay:String = noteTypes[Math.round(Math.abs(daNote.originalType)) % dadStrumAmount];
+					switch (daNote.noteStyle)
+					{
+						case 'phone':
+							dad.playAnim('singSmash', true);
+					        case 'phone-zardy':
+							boyfriend.playAnim('singSmash', true);
+						default:
+							if (daNote.noteStyle == 'phone-alt') { // I didn't notice bambi's alt animation has only left and right
+								if (noteToPlay == 'UP') noteToPlay = 'RIGHT';
+								if (noteToPlay == 'DOWN') noteToPlay = 'LEFT';
+							}
+							if (dad.nativelyPlayable)
+							{
+								switch (noteToPlay)
+								{
+									case 'LEFT':
+										noteToPlay = 'RIGHT';
+									case 'RIGHT':
+										noteToPlay = 'LEFT';
+								}
+							}
+							dad.playAnim('sing' + noteToPlay + altAnim, true);
+							if (dadmirror != null)
+							{
+								dadmirror.playAnim('sing' + noteToPlay + altAnim, true);
+							}
+					}
+				if (!daNote.mustPress && daNote.wasGoodHit && !daNote.hitByOpponent)
+				{
+					if (SONG.song != 'Warmup')
+						camZooming = true; 
+
+					var altAnim:String = "";
+					var healthtolower:Float = 0.02;
+
+					if (currentSection != null)
+					{
+						if (daNote.noteStyle == 'phone-alt')
+						{
+							altAnim = '-alt';
+						}
+					}
+					cameraMoveOnNote(noteToPlay, 'dad');
 
 					if(!daNote.blockHit && daNote.mustPress && cpuControlled && daNote.canBeHit) {
 						if(daNote.isSustainNote) {
