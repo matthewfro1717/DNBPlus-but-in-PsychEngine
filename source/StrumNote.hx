@@ -28,7 +28,7 @@ class StrumNote extends FlxSprite
 		ID = strumID;
 
 		// actually load in the animation
-		switch (type)
+		switch (skin)
 		{
 			case 'gh':
 				animation.addByPrefix('green', 'A Strum');
