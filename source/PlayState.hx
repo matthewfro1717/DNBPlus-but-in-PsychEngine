@@ -4758,15 +4758,7 @@ class PlayState extends MusicBeatState
 						notes.remove(daNote, true);
 						daNote.destroy();
 					}
-				});
-			}
-			else
-			{
-				notes.forEachAlive(function(daNote:Note)
-				{
-					daNote.canBeHit = false;
-					daNote.wasGoodHit = false;
-				});
+				}
 			}
 		}
 		checkEventNote();
@@ -4789,8 +4781,6 @@ class PlayState extends MusicBeatState
 		setOnLuas('botPlay', cpuControlled);
 		callOnLuas('onUpdatePost', [elapsed]);
 	}
-
-
 
 	function openPauseMenu()
 	{
