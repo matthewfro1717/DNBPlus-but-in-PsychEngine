@@ -4860,10 +4860,13 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	public function checkEventNote() {
-		while(eventNotes.length > 0) {
+	public function checkEventNote() 
+	{
+		while(eventNotes.length > 0) 
+		{
 			var leStrumTime:Float = eventNotes[0].strumTime;
-			if(Conductor.songPosition < leStrumTime) {
+			if(Conductor.songPosition < leStrumTime)
+			{
 				break;
 			}
 
@@ -4880,14 +4883,17 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	public function getControl(key:String) {
+	public function getControl(key:String) 
+	{
 		var pressed:Bool = Reflect.getProperty(controls, key);
 		//trace('Control result: ' + pressed);
 		return pressed;
 	}
 
-	public function triggerEventNote(eventName:String, value1:String, value2:String) {
-		switch(eventName) {
+	public function triggerEventNote(eventName:String, value1:String, value2:String)
+	{
+		switch(eventName) 
+		{
 			case 'Dadbattle Spotlight':
 				var val:Null<Int> = Std.parseInt(value1);
 				if(val == null) val = 0;
@@ -5275,7 +5281,8 @@ class PlayState extends MusicBeatState
 		callOnLuas('onEvent', [eventName, value1, value2]);
 	}
 
-	function moveCameraSection():Void {
+	function moveCameraSection():Void
+        {
 		if(SONG.notes[curSection] == null) return;
 
 		if (gf != null && SONG.notes[curSection].gfSection)
@@ -5342,10 +5349,15 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	function tweenCamIn() {
-		if (Paths.formatToSongPath(SONG.song) == 'tutorial' && cameraTwn == null && FlxG.camera.zoom != 1.3) {
+	function tweenCamIn()
+        {
+		if (Paths.formatToSongPath(SONG.song) == 'tutorial' && cameraTwn == null && FlxG.camera.zoom != 1.3)
+		{
 			cameraTwn = FlxTween.tween(FlxG.camera, {zoom: 1.3}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.elasticInOut, onComplete:
-				function (twn:FlxTween) {
+			{
+				function (twn:FlxTween) 
+		       
+				{
 					cameraTwn = null;
 				}
 			});
@@ -5377,19 +5389,25 @@ class PlayState extends MusicBeatState
 	public function endSong():Void
 	{
 		//Should kill you if you tried to cheat
-		if(!startingSong) {
-			notes.forEach(function(daNote:Note) {
-				if(daNote.strumTime < songLength - Conductor.safeZoneOffset) {
+		if(!startingSong) 
+		{
+			notes.forEach(function(daNote:Note) 
+		        {
+				if(daNote.strumTime < songLength - Conductor.safeZoneOffset)
+				{
 					health -= 0.05 * healthLoss;
 				}
 			});
-			for (daNote in unspawnNotes) {
-				if(daNote.strumTime < songLength - Conductor.safeZoneOffset) {
+			for (daNote in unspawnNotes)
+			{
+				if(daNote.strumTime < songLength - Conductor.safeZoneOffset)
+				{
 					health -= 0.05 * healthLoss;
 				}
 			}
 
-			if(doDeathCheck()) {
+			if(doDeathCheck())
+			{
 				return;
 			}
 		}
@@ -5407,9 +5425,12 @@ class PlayState extends MusicBeatState
 		seenCutscene = false;
 
 		#if ACHIEVEMENTS_ALLOWED
-		if(achievementObj != null) {
+		if(achievementObj != null) 
+		{
 			return;
-		} else {
+		} 
+		else 
+		{
 			var achieve:String = checkForAchievement(['week1_nomiss', 'week2_nomiss', 'week3_nomiss', 'week4_nomiss',
 				'week5_nomiss', 'week6_nomiss', 'week7_nomiss', 'ur_bad',
 				'ur_good', 'hype', 'two_keys', 'toastie', 'debugger']);
@@ -5422,7 +5443,8 @@ class PlayState extends MusicBeatState
 		#end
 
 		var ret:Dynamic = callOnLuas('onEndSong', [], false);
-		if(ret != FunkinLua.Function_Stop && !transitioning) {
+		if(ret != FunkinLua.Function_Stop && !transitioning) 
+		{
 			if (SONG.validScore)
 			{
 				#if !switch
@@ -5452,13 +5474,15 @@ class PlayState extends MusicBeatState
 					FlxG.sound.playMusic(Paths.music('freakyMenu'));
 
 					cancelMusicFadeTween();
-					if(FlxTransitionableState.skipNextTransIn) {
+					if(FlxTransitionableState.skipNextTransIn) 
+					{
 						CustomFadeTransition.nextCamera = null;
 					}
 					MusicBeatState.switchState(new StoryMenuState());
 
 					// if ()
-					if(!ClientPrefs.getGameplaySetting('practice', false) && !ClientPrefs.getGameplaySetting('botplay', false)) {
+					if(!ClientPrefs.getGameplaySetting('practice', false) && !ClientPrefs.getGameplaySetting('botplay', false))
+					{
 						StoryMenuState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
 
 						if (SONG.validScore)
@@ -5499,12 +5523,16 @@ class PlayState extends MusicBeatState
 					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0] + difficulty, PlayState.storyPlaylist[0]);
 					FlxG.sound.music.stop();
 
-					if(winterHorrorlandNext) {
-						new FlxTimer().start(1.5, function(tmr:FlxTimer) {
+					if(winterHorrorlandNext)
+					{
+						new FlxTimer().start(1.5, function(tmr:FlxTimer)
+						{
 							cancelMusicFadeTween();
 							LoadingState.loadAndSwitchState(new PlayState());
 						});
-					} else {
+					}
+					else
+					{
 						cancelMusicFadeTween();
 						LoadingState.loadAndSwitchState(new PlayState());
 					}
@@ -5515,7 +5543,8 @@ class PlayState extends MusicBeatState
 				trace('WENT BACK TO FREEPLAY??');
 				WeekData.loadTheFirstEnabledMod();
 				cancelMusicFadeTween();
-				if(FlxTransitionableState.skipNextTransIn) {
+				if(FlxTransitionableState.skipNextTransIn)
+				{
 					CustomFadeTransition.nextCamera = null;
 				}
 				MusicBeatState.switchState(new FreeplayState());
@@ -5528,7 +5557,8 @@ class PlayState extends MusicBeatState
 
 	#if ACHIEVEMENTS_ALLOWED
 	var achievementObj:AchievementObject = null;
-	function startAchievement(achieve:String) {
+	function startAchievement(achieve:String)
+        {
 		achievementObj = new AchievementObject(achieve, camOther);
 		achievementObj.onFinish = achievementEnd;
 		add(achievementObj);
@@ -5537,14 +5567,17 @@ class PlayState extends MusicBeatState
 	function achievementEnd():Void
 	{
 		achievementObj = null;
-		if(endingSong && !inCutscene) {
+		if(endingSong && !inCutscene)
+		{
 			endSong();
 		}
 	}
 	#end
 
-	public function KillNotes() {
-		while(notes.length > 0) {
+	public function KillNotes()
+        {
+		while(notes.length > 0)
+		{
 			var daNote:Note = notes.members[0];
 			daNote.active = false;
 			daNote.visible = false;
