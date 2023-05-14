@@ -4860,14 +4860,11 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	public function checkEventNote() 
-	{
-		while(eventNotes.length > 0) 
-		{
+	public function checkEventNote() {
+		while(eventNotes.length > 0) {
 			var leStrumTime:Float = eventNotes[0].strumTime;
-			if(Conductor.songPosition < leStrumTime)
-			{
-				break;
+			if(Conductor.songPosition < leStrumTime) {
+				return;
 			}
 
 			var value1:String = '';
@@ -4883,8 +4880,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	public function getControl(key:String) 
-	{
+	public function getControl(key:String) {
 		var pressed:Bool = Reflect.getProperty(controls, key);
 		//trace('Control result: ' + pressed);
 		return pressed;
