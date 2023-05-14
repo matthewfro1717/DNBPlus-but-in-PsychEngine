@@ -617,6 +617,26 @@ class Note extends FlxSprite
 		updateHitbox();
 	}*/
 
+	public function GoToStrum(strum:StrumNote)
+	{
+		x = strum.x + noteOffset;
+		alpha = strum.alpha * alphaMult;
+
+		if (strum.pressingKey5)
+		{
+			if (noteStyle != "shape")
+			{
+				alpha *= 0.5;
+			}
+		}
+		else
+		{
+			if (noteStyle == "shape")
+			{
+				alpha *= 0.5;
+			}
+		}
+	}
 
 	override function update(elapsed:Float)
 	{
