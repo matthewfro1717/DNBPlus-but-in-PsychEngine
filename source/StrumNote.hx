@@ -146,26 +146,6 @@ class StrumNote extends FlxSprite
 		return value;
 	}
 
-	public function new(x:Float, y:Float, leData:Int, player:Int) {
-		colorSwap = new ColorSwap();
-		shader = colorSwap.shader;
-		noteData = leData;
-		this.player = player;
-		this.noteData = leData;
-		super(x, y);
-
-		animationArray[0] = Note.keysShit.get(PlayState.mania).get('strumAnims')[leData];
-		animationArray[1] = Note.keysShit.get(PlayState.mania).get('letters')[leData];
-		animationArray[2] = Note.keysShit.get(PlayState.mania).get('letters')[leData]; // jic
-
-		var skin:String = 'NOTE_assets';
-		//if(PlayState.isPixelStage) skin = 'PIXEL_' + skin;
-		if(PlayState.SONG.arrowSkin != null && PlayState.SONG.arrowSkin.length > 1) skin = PlayState.SONG.arrowSkin;
-		texture = skin; //Load texture and anims
-
-		scrollFactor.set();
-	}
-
 	public function reloadNote()
 	{
 		var lastAnim:String = null;
