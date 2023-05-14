@@ -140,6 +140,7 @@ class PlayState extends MusicBeatState
 	public var boyfriendGroup:FlxSpriteGroup;
 	public var dadGroup:FlxSpriteGroup;
 	public var gfGroup:FlxSpriteGroup;
+	public static var stageCheck:String = '';
 	public static var curStage:String = '';
 	public static var isPixelStage:Bool = false;
 	public static var SONG:SwagSong = null;
@@ -435,7 +436,7 @@ class PlayState extends MusicBeatState
 
 		
 
-		curStage = SONG.stage;
+		stageCheck = SONG.stage;
 		//trace('stage is: ' + curStage);
 		if(SONG.stage == null || SONG.stage.length < 1) {
 			switch (songName)
@@ -522,14 +523,14 @@ class PlayState extends MusicBeatState
 				case 'foolhardy':
 					stageCheck = 'fuckyouZardyTime';
 				default:
-					curStage = 'stage';
+					stageCheck = 'stage';
 			}
 		}
 		else
 		{
-			stageCheck = SONG.stage;
+			curStage = SONG.stage;
 		}
-		backgroundSprites = createBackgroundSprites(stageCheck, false);
+		backgroundSprites = createBackgroundSprites(curStage, false);
 		switch (SONG.song.toLowerCase())
 		{
 			case 'secret':
@@ -554,9 +555,9 @@ class PlayState extends MusicBeatState
 					bgSprite.alpha = 0;
 				}
 		}
-		SONG.stage = curStage;
+		SONG.stage = stageCheck;
 
-		var stageData:StageFile = StageData.getStageFile(curStage);
+		var stageData:StageFile = StageData.getStageFile(stageCheck);
 		if(stageData == null) { //Stage couldn't be found, create a dummy stage for preventing a crash
 			stageData = {
 				directory: "",
@@ -6275,7 +6276,2748 @@ class PlayState extends MusicBeatState
 		if(curStep == lastStepHit) {
 			return;
 		}
+		switch (SONG.song.toLowerCase())
+		{
+			case 'blocked':
+				switch (curStep)
+				{
+					case 128:
+						defaultCamZoom += 0.1;
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						black = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+						black.screenCenter();
+						black.alpha = 0;
+						add(black);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						makeInvisibleNotes(true);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('blocked_sub1'), 0.02, 1);
+					case 165:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('blocked_sub2'), 0.02, 1);
+					case 188:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('blocked_sub3'), 0.02, 1);
+					case 224:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('blocked_sub4'), 0.02, 1);
+					case 248:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('blocked_sub5'), 0.02, 0.5, {subtitleSize: 60});
+					case 256:
+						defaultCamZoom -= 0.1;
+						FlxG.camera.flash();
+						FlxTween.tween(black, {alpha: 0}, 1);
+						makeInvisibleNotes(false);
+					case 640:
+						FlxG.camera.flash();
+						black.alpha = 0.6;
+						defaultCamZoom += 0.1;
+					case 768:
+						FlxG.camera.flash();
+						defaultCamZoom -= 0.1;
+						black.alpha = 0;
+					case 1028:
+						makeInvisibleNotes(true);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('blocked_sub6'), 0.02, 1.5);
+					case 1056:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('blocked_sub7'), 0.02, 1);
+					case 1084:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('blocked_sub8'), 0.02, 1);
+					case 1104:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('blocked_sub9'), 0.02, 1);
+					case 1118:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('blocked_sub10'), 0.02, 1);
+					case 1143:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('blocked_sub11'), 0.02, 1, {subtitleSize: 45});
+						makeInvisibleNotes(false);
+					case 1152:
+						FlxTween.tween(black, {alpha: 0.4}, 1);
+						defaultCamZoom += 0.3;
+					case 1200:
+						#if SHADERS_ENABLED
+						if(CompatTool.save.data.compatMode != null && CompatTool.save.data.compatMode == false)
+							{
+								camHUD.setFilters([new ShaderFilter(blockedShader.shader)]);
+							}
+						#end
+						FlxTween.tween(black, {alpha: 0.7}, (Conductor.stepCrochet / 1000) * 8);
+					case 1216:
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						camHUD.setFilters([]);
+						remove(black);
+						defaultCamZoom -= 0.3;
+				}
+			case 'corn-theft':
+				switch (curStep)
+				{
+					case 668:
+						defaultCamZoom += 0.1;
+					case 784:
+						defaultCamZoom += 0.1;
+					case 848:
+						defaultCamZoom -= 0.2;
+					case 916:
+						FlxG.camera.flash();
+					case 935:
+						defaultCamZoom += 0.2;
+						black = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+						black.screenCenter();
+						black.alpha = 0;
+						add(black);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						makeInvisibleNotes(true);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('ctheft_sub1'), 0.02, 1);
+					case 945:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('ctheft_sub2'), 0.02, 1);
+					case 976:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('ctheft_sub3'), 0.02, 0.5);
+					case 982:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('ctheft_sub4'), 0.02, 1);
+					case 992:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('ctheft_sub5'), 0.02, 1);
+					case 1002:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('ctheft_sub6'), 0.02, 0.3);
+					case 1007:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('ctheft_sub7'), 0.02, 0.3);
+					case 1033:
+						subtitleManager.addSubtitle("Bye Baa!", 0.02, 0.3, {subtitleSize: 45});
+						FlxTween.tween(dad, {alpha: 0}, (Conductor.stepCrochet / 1000) * 6);
+						FlxTween.tween(black, {alpha: 0}, (Conductor.stepCrochet / 1000) * 6);
+						FlxTween.num(defaultCamZoom, defaultCamZoom + 0.2, (Conductor.stepCrochet / 1000) * 6, {}, function(newValue:Float)
+						{
+							defaultCamZoom = newValue;
+						});
+						makeInvisibleNotes(false);
+					case 1040:
+						defaultCamZoom = 0.8; 
+						dad.alpha = 1;
+						remove(black);
+						FlxG.camera.flash();
+				}
+			case 'maze':
+				switch (curStep)
+				{
+					case 466:
+						defaultCamZoom += 0.2;
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						black = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+						black.screenCenter();
+						black.alpha = 0;
+						add(black);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						makeInvisibleNotes(true);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('maze_sub1'), 0.02, 1);
+					case 476:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('maze_sub2'), 0.02, 0.7);
+					case 484:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('maze_sub3'), 0.02, 1);
+					case 498:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('maze_sub4'), 0.02, 1);
+					case 510:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('maze_sub5'), 0.02, 1, {subtitleSize: 60});
+						makeInvisibleNotes(false);
+					case 528:
+						 defaultCamZoom = 0.8;
+						black.alpha = 0;
+						FlxG.camera.flash();
+					case 832:
+						defaultCamZoom += 0.2;
+						FlxTween.tween(black, {alpha: 0.4}, 1);
+					case 838:
+						makeInvisibleNotes(true);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('maze_sub6'), 0.02, 1);
+					case 847:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('maze_sub7'), 0.02, 0.5);
+					case 856:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('maze_sub8'), 0.02, 1);
+					case 867:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('maze_sub9'), 0.02, 1, {subtitleSize: 40});
+					case 879:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('maze_sub10'), 0.02, 1);
+					case 890:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('maze_sub11'), 0.02, 1);
+					case 902:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('maze_sub12'), 0.02, 1, {subtitleSize: 60});
+						makeInvisibleNotes(false);
+					case 908:
+						FlxTween.tween(black, {alpha: 1}, (Conductor.stepCrochet / 1000) * 4);
+					case 912:
+						if (!spotLightPart)
+						{
+							spotLightPart = true;
+							defaultCamZoom -= 0.1;
+							FlxG.camera.flash(FlxColor.WHITE, 0.5);
+	
+							spotLight = new FlxSprite().loadGraphic(Paths.image('spotLight'));
+							spotLight.blend = BlendMode.ADD;
+							spotLight.setGraphicSize(Std.int(spotLight.width * (dad.frameWidth / spotLight.width) * spotLightScaler));
+							spotLight.updateHitbox();
+							spotLight.alpha = 0;
+							spotLight.origin.set(spotLight.origin.x,spotLight.origin.y - (spotLight.frameHeight / 2));
+							add(spotLight);
+	
+							spotLight.setPosition(dad.getGraphicMidpoint().x - spotLight.width / 2, dad.getGraphicMidpoint().y + dad.frameHeight / 2 - (spotLight.height));	
+							updateSpotlight(false);
+							
+							FlxTween.tween(black, {alpha: 0.6}, 1);
+							FlxTween.tween(spotLight, {alpha: 0.7}, 1);
+						}
+					case 1168:
+						spotLightPart = false;
+						FlxTween.tween(spotLight, {alpha: 0}, 1, {onComplete: function(tween:FlxTween)
+						{
+							remove(spotLight);
+						}});
+						FlxTween.tween(black, {alpha: 0}, 1);
+					case 1232:
+						FlxG.camera.flash();
+				}
+			case 'greetings':
+				switch (curStep)
+				{
+					case 492:
+						var curZoom = defaultCamZoom;
+						var time = (Conductor.stepCrochet / 1000) * 20;
+						FlxG.camera.fade(FlxColor.WHITE, time, false, function()
+						{
+							FlxG.camera.fade(FlxColor.WHITE, 0, true, function()
+							{
+								FlxG.camera.flash(FlxColor.WHITE, 0.5);
+							});
+						});
+						FlxTween.num(curZoom, curZoom + 0.4, time, {onComplete: function(tween:FlxTween)
+						{
+							defaultCamZoom = 0.7;
+						}}, function(newValue:Float)
+						{
+							defaultCamZoom = newValue;
+						});
+				}
+			case 'recursed':
+				switch (curStep)
+				{
+					case 320:
+						defaultCamZoom = 0.6;
+						cinematicBars(((Conductor.stepCrochet * 30) / 1000), 400);
+					case 352:
+						defaultCamZoom = 0.4;
+						FlxG.camera.flash();
+					case 864:
+						FlxG.camera.flash();
+						charBackdrop.loadGraphic(Paths.image('recursed/bambiScroll'));
+						freeplayBG.loadGraphic(bambiBG);
+						freeplayBG.color = FlxColor.multiply(0xFF00B515, FlxColor.fromRGB(44, 44, 44));
+						initAlphabet(bambiSongs);
+					case 1248:
+						defaultCamZoom = 0.6;
+						FlxG.camera.flash();
+						charBackdrop.loadGraphic(Paths.image('recursed/tristanScroll'));
+						freeplayBG.loadGraphic(tristanBG);
+						freeplayBG.color = FlxColor.multiply(0xFFFF0000, FlxColor.fromRGB(44, 44, 44));
+						initAlphabet(tristanSongs);
+					case 1632:
+						defaultCamZoom = 0.4;
+						FlxG.camera.flash();
+				}
+			case 'splitathon' | 'old-splitathon':
+				switch (curStep)
+				{
+					case 4750:
+						dad.canDance = false;
+						dad.playAnim('scared', true);
+						camHUD.shake(0.015, (Conductor.stepCrochet / 1000) * 50);
+					case 4800:
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						splitathonExpression('dave', 'what');
+						addSplitathonChar("bambi-splitathon");
+						if (!hasTriggeredDumbshit)
+						{
+							throwThatBitchInThere('bambi-splitathon', 'dave-splitathon');
+						}
+					case 5824:
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						splitathonExpression('bambi', 'umWhatIsHappening');
+						addSplitathonChar("dave-splitathon");
+					case 6080:
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						splitathonExpression('dave', 'happy'); 
+						addSplitathonChar("bambi-splitathon");
+					case 8384:
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						splitathonExpression('bambi', 'yummyCornLol');
+						addSplitathonChar("dave-splitathon");
+					case 4799 | 5823 | 6079 | 8383:
+						hasTriggeredDumbshit = false;
+						updatevels = false;
+				}
 
+			case 'insanity' | 'insanity-2.5':
+				switch (curStep)
+				{
+					case 384 | 1040:
+						defaultCamZoom = 0.9;
+					case 448 | 1056:
+						defaultCamZoom = 0.8;
+					case 512 | 768:
+						defaultCamZoom = 1;
+					case 640:
+						defaultCamZoom = 1.1;
+					case 660 | 680:
+						FlxG.sound.play(Paths.sound('static'), 0.1);
+						dad.visible = false;
+						dadmirror.visible = true;
+						curbg.visible = true;
+						iconP2.changeIcon(dadmirror.curCharacter);
+					case 664 | 684:
+						dad.visible = true;
+						dadmirror.visible = false;
+						curbg.visible = false;
+						iconP2.changeIcon(dad.curCharacter);
+					case 708:
+						defaultCamZoom = 0.8;
+						dad.playAnim('um', true);
+
+					case 1176:
+						FlxG.sound.play(Paths.sound('static'), 0.1);
+						dad.visible = false;
+						dadmirror.visible = true;
+						curbg.loadGraphic(Paths.image('backgrounds/void/redsky', 'shared'));
+						if (isShaggy) curbg.y -= 200;
+						curbg.alpha = 1;
+						curbg.visible = true;
+						iconP2.changeIcon(dadmirror.curCharacter);
+					case 1180:
+						dad.visible = true;
+						dadmirror.visible = false;
+						iconP2.changeIcon(dad.curCharacter);
+						dad.canDance = false;
+						dad.animation.play('scared', true);
+				}
+			case 'interdimensional':
+				switch(curStep)
+				{
+					case 378:
+						FlxG.camera.fade(FlxColor.WHITE, 0.3, false);
+					case 384:
+						black = new FlxSprite(0,0).makeGraphic(2560, 1440, FlxColor.BLACK);
+						black.screenCenter();
+						black.scrollFactor.set();
+						black.alpha = 0.4;
+						add(black);
+						defaultCamZoom += 0.2;
+						FlxG.camera.fade(FlxColor.WHITE, 0.5, true);
+					case 512:
+						defaultCamZoom -= 0.1;
+					case 639:
+						FlxG.camera.flash(FlxColor.WHITE, 0.3, false);
+						defaultCamZoom -= 0.1; // pooop
+						FlxTween.tween(black, {alpha: 0}, 0.5, 
+						{
+							onComplete: function(tween:FlxTween)
+							{
+								remove(black);
+							}
+						});
+						changeInterdimensionBg('spike-void');
+					case 1152:
+						FlxG.camera.flash(FlxColor.WHITE, 0.3, false);
+						changeInterdimensionBg('darkSpace');
+						
+						tweenList.push(FlxTween.color(gf, 1, gf.color, FlxColor.BLUE));
+						tweenList.push(FlxTween.color(dad, 1, dad.color, FlxColor.BLUE));
+						bfTween = FlxTween.color(boyfriend, 1, boyfriend.color, FlxColor.BLUE);
+						flyingBgChars.forEach(function(char:FlyingBGChar)
+						{
+							tweenList.push(FlxTween.color(char, 1, char.color, FlxColor.BLUE));
+						});
+					case 1408:
+						FlxG.camera.flash(FlxColor.WHITE, 0.3, false);
+						changeInterdimensionBg('hexagon-void');
+
+						tweenList.push(FlxTween.color(dad, 1, dad.color, FlxColor.WHITE));
+						bfTween = FlxTween.color(boyfriend, 1, boyfriend.color, FlxColor.WHITE);
+						tweenList.push(FlxTween.color(gf, 1, gf.color, FlxColor.WHITE));
+						flyingBgChars.forEach(function(char:FlyingBGChar)
+						{
+							tweenList.push(FlxTween.color(char, 1, char.color, FlxColor.WHITE));
+						});
+					case 1792:
+						FlxG.camera.flash(FlxColor.WHITE, 0.3, false);
+
+						nimbiLand = new BGSprite('nimbiLand', 200, 100, Paths.image('backgrounds/void/interdimensions/nimbi/nimbi_land'), null, 1, 1, false, true);
+						//backgroundSprites.add(nimbiLand);
+						nimbiLand.setGraphicSize(Std.int(nimbiLand.width * 1.5));
+						insert(members.indexOf(flyingBgChars), nimbiLand);
+						add(nimbiLand);
+		
+						nimbiSign = new BGSprite('sign', 800, -73, Paths.image('backgrounds/void/interdimensions/nimbi/sign'), null, 1, 1, false, true);
+						//backgroundSprites.add(nimbiSign);
+						nimbiSign.setGraphicSize(Std.int(nimbiSign.width * 0.2));
+						insert(members.indexOf(flyingBgChars), nimbiSign);
+						add(nimbiSign);						
+
+						nimbi = new BGSprite('train', 1250, 275, 'backgrounds/void/interdimensions/nimbi/nimbi', [
+							new Animation('idle', 'lol hi dave and boyfriend fnf what a peculiar coincidence that we are here at this exact time', 24, true, [false, false])
+						], 1, 1, true, true);
+						nimbi.animation.play('idle');
+						nimbi.updateHitbox();
+						nimbi.setGraphicSize(Std.int(nimbi.width * 0.5));
+						//nimbi.antialiasing = FlxG.save.data.globalAntialiasing;
+						insert(members.indexOf(flyingBgChars), nimbi);
+						add(nimbi);
+
+						changeInterdimensionBg('nimbi-void');
+					case 2176:
+						FlxG.camera.flash(FlxColor.WHITE, 0.3, false);
+						remove(nimbi);
+						remove(nimbiSign);
+						remove(nimbiLand);
+						changeInterdimensionBg('interdimension-void');
+					case 2688:
+						defaultCamZoom = 0.7;
+						for (bgSprite in backgroundSprites)
+						{
+							FlxTween.tween(bgSprite, {alpha: 0}, 1);
+						}
+						for (bgSprite in revertedBG)
+						{
+							FlxTween.tween(bgSprite, {alpha: 1}, 1);
+						}
+
+						canFloat = false;
+						FlxG.camera.flash(FlxColor.WHITE, 0.25);
+						switchDad('dave-festival', dad.getPosition(), false);
+
+						regenerateStaticArrows(0);
+						
+						var color = getBackgroundColor(curStage);
+
+						FlxTween.color(dad, 0.6, dad.color, color);
+						if (formoverride != 'tristan-golden-glowing')
+						{
+							FlxTween.color(boyfriend, 0.6, boyfriend.color, color);
+						}
+						FlxTween.color(gf, 0.6, gf.color, color);
+
+						FlxTween.linearMotion(dad, dad.x, dad.y, 100 + dad.globalOffset[0], 450 + dad.globalOffset[1], 0.6, true);
+						if (isShaggy) {
+							FlxTween.linearMotion(boyfriend, boyfriend.x, boyfriend.y, 770 + boyfriend.globalOffset[0], 450 + boyfriend.globalOffset[1], 0.6, true);
+							shx = 770 + boyfriend.globalOffset[0];
+							shy = 450 + boyfriend.globalOffset[1];
+						}
+						
+						if (!isShaggy) {
+							for (char in [boyfriend, gf])
+							{
+								if (char.animation.curAnim != null && char.animation.curAnim.name.startsWith('sing') && !char.animation.curAnim.finished)
+								{
+									char.animation.finishCallback = function(animation:String)
+									{
+										char.canDance = false;
+										char == boyfriend ? char.playAnim('hey', true) : char.playAnim('cheer', true);
+									}
+								}
+								else
+								{
+									char.canDance = false;
+									char == boyfriend ? char.playAnim('hey', true) : char.playAnim('cheer', true);
+								}
+							}
+						}
+				}
+
+			case 'unfairness':
+				switch(curStep)
+				{
+					case 256:
+						defaultCamZoom += 0.2;
+						black = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+						black.screenCenter();
+						black.alpha = 0;
+						add(black);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						makeInvisibleNotes(true);
+					case 261:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('unfairness_sub1'), 0.02, 0.6);
+					case 284:
+					    subtitleManager.addSubtitle(LanguageManager.getTextString('unfairness_sub2'), 0.02, 0.6);
+					case 321:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('unfairness_sub3'), 0.02, 0.6);
+					case 353:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('unfairness_sub4'), 0.02, 1.5);
+					case 414:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('unfairness_sub5'), 0.02, 0.6);
+					case 439:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('unfairness_sub6'), 0.02, 1);
+					case 468:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('unfairness_sub7'), 0.02, 1);
+					case 512:
+						defaultCamZoom -= 0.2;
+						FlxTween.tween(black, {alpha: 0}, 1);
+						makeInvisibleNotes(false);
+					case 2560:
+						if (modchartoption) {
+							dadStrums.forEach(function(spr:StrumNote)
+							{
+								FlxTween.tween(spr, {alpha: 0}, 6);
+							});
+						}
+					case 2688:
+						if (modchartoption) {
+							playerStrums.forEach(function(spr:StrumNote)
+							{
+								FlxTween.tween(spr, {alpha: 0}, 6);
+							});
+						}
+					case 3072:
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						dad.visible = false;
+						iconP2.visible = false;
+				}
+				case 'cheating':
+					switch(curStep)
+					{
+						case 512:
+							defaultCamZoom += 0.2;
+							black = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+							black.screenCenter();
+							black.alpha = 0;
+							add(black);
+							FlxTween.tween(black, {alpha: 0.6}, 1);
+							makeInvisibleNotes(true);
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub1'), 0.02, 0.6);
+						case 537:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub2'), 0.02, 0.6);
+						case 552:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub3'), 0.02, 0.6);
+						case 570:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub4'), 0.02, 1);
+						case 595:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub5'), 0.02, 0.6);
+						case 607:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub6'), 0.02, 0.6);
+						case 619:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub7'), 0.02, 1);
+						case 640:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub8'), 0.02, 0.6);
+						case 649:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub9'), 0.02, 0.6);
+						case 654:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub10'), 0.02, 0.6);
+						case 666:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub11'), 0.02, 0.6);
+						case 675:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub12'), 0.02, 0.6);
+						case 685:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub13'), 0.02, 0.6);
+						case 695:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub14'), 0.02, 0.6);
+						case 712:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub15'), 0.02, 0.6);
+						case 715:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub16'), 0.02, 0.6);
+						case 722:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub17'), 0.02, 0.6);
+						case 745:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub18'), 0.02, 0.3);
+						case 749:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub19'), 0.02, 0.3);
+						case 756:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub20'), 0.02, 0.6);
+						case 768:
+							defaultCamZoom -= 0.2;
+							FlxTween.tween(black, {alpha: 0}, 1);
+							makeInvisibleNotes(false);
+						case 1280:
+							defaultCamZoom += 0.2;
+							black = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+							black.screenCenter();
+							black.alpha = 0;
+							add(black);
+							FlxTween.tween(black, {alpha: 0.6}, 1);
+						case 1301:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub21'), 0.02, 0.6);
+						case 1316:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub22'), 0.02, 0.6);
+						case 1344:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub23'), 0.02, 0.6);
+						case 1374:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub24'), 0.02, 1);
+						case 1394:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub25'), 0.02, 0.5);
+						case 1403:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub26'), 0.02, 1);
+						case 1429:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub27'), 0.02, 0.6);
+						case 1475:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub28'), 0.02, 1.5);
+						case 1504:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub29'), 0.02, 1);
+						case 1528:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('cheating_sub30'), 0.02, 0.6);
+						case 1536:
+							defaultCamZoom -= 0.2;
+							FlxTween.tween(black, {alpha: 0}, 1);
+
+					}
+			case 'polygonized' | 'polygonized-2.5':
+				switch(curStep)
+				{
+					case 128 | 640 | 704 | 1535:
+						defaultCamZoom = 0.9;
+					case 256 | 768 | 1468 | 1596 | 2048 | 2144 | 2428:
+						defaultCamZoom = 0.7;
+					case 688 | 752 | 1279 | 1663 | 2176:
+						defaultCamZoom = 1;
+					case 1019 | 1471 | 1599 | 2064:
+						defaultCamZoom = 0.8;
+					case 1920:
+						defaultCamZoom = 1.1;
+
+					case 1024 | 1312:
+						defaultCamZoom = 1.1;
+						crazyZooming = true;
+
+						if (localFunny != CharacterFunnyEffect.Recurser)
+						{
+							shakeCam = true;
+							pre3dSkin = boyfriend.curCharacter;
+							for (char in [boyfriend, gf])
+							{
+								if (char.skins.exists('3d'))
+								{
+									if (char == boyfriend)
+									{
+										switchBF(char.skins.get('3d'), char.getPosition());
+									}
+									else if (char == gf)
+									{
+										switchGF(char.skins.get('3d'), char.getPosition());
+									}
+								}
+							}
+						}
+					case 1152 | 1408:
+						defaultCamZoom = 0.9;
+						shakeCam = false;
+						crazyZooming = false;
+						if (localFunny != CharacterFunnyEffect.Recurser)
+						{
+							if (boyfriend.curCharacter != pre3dSkin)
+							{
+								switchBF(pre3dSkin, boyfriend.getPosition());
+								switchGF(boyfriend.skins.get('gfSkin'), gf.getPosition());
+							}
+						}
+				}
+			case 'adventure':
+				switch (curStep)
+				{
+					case 1151:
+						defaultCamZoom = 1;
+					case 1407:
+						defaultCamZoom = 0.8;	
+				}
+			case 'glitch':
+				switch (curStep)
+				{
+					case 15:
+						dad.playAnim('hey', true);
+					case 16 | 719 | 1167:
+						defaultCamZoom = 1;
+					case 80 | 335 | 588 | 1103:
+						defaultCamZoom = 0.8;
+					case 584 | 1039:
+						defaultCamZoom = 1.2;
+					case 272 | 975:
+						defaultCamZoom = 1.1;
+					case 464:
+						defaultCamZoom = 1;
+						FlxTween.linearMotion(dad, dad.x, dad.y, 25, 50, 20, true);
+					case 848:
+						shakeCam = false;
+						crazyZooming = false;
+						defaultCamZoom = 1;
+					case 132 | 612 | 740 | 771 | 836:
+						shakeCam = true;
+						crazyZooming = true;
+						defaultCamZoom = 1.2;
+					case 144 | 624 | 752 | 784:
+						shakeCam = false;
+						crazyZooming = false;
+						defaultCamZoom = 0.8;
+					case 1231:
+						defaultCamZoom = 0.8;
+						FlxTween.linearMotion(dad, dad.x, dad.y, 50, 280, 1, true);
+				}
+			case 'mealie':
+				switch (curStep)
+				{
+					case 659:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('mealie_sub1'), 0.02, 0.6);
+					case 1183:
+						defaultCamZoom += 0.2;
+						black = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+						black.screenCenter();
+						black.alpha = 0;
+						add(black);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						makeInvisibleNotes(true);
+					case 1193:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('mealie_sub2'), 0.02, 0.6);
+					case 1208:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('mealie_sub3'), 0.02, 1.5);
+					case 1228:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('mealie_sub4'), 0.02, 1);
+					case 1242:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('mealie_sub5'), 0.02, 1);
+					case 1257:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('mealie_sub6'), 0.02, 0.5);
+					case 1266:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('mealie_sub7'), 0.02, 1.5);
+					case 1289:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('mealie_sub8'), 0.02, 2);
+					case 1344:
+						defaultCamZoom -= 0.2;
+						FlxTween.tween(black, {alpha: 0}, 1);
+						makeInvisibleNotes(false);
+					case 1584:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('mealie_sub15'), 0.02, 1);
+					case 1746:
+					case 1751:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('mealie_sub9'), 0.02, 0.6);
+					case 1770:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('mealie_sub10'), 0.02, 0.6);
+					case 1776:
+						FlxG.camera.flash(FlxColor.WHITE, 0.25);
+						switchDad(FlxG.random.int(0, 999) == 0 ? 'bambi-angey-old' : 'bambi-angey', dad.getPosition());
+						dad.color = nightColor;
+					case 1800:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('mealie_sub11'), 0.02, 0.6);
+					case 1810:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('mealie_sub12'), 0.02, 0.6);
+					case 1843:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('mealie_sub13'), 0.02, 1, {subtitleSize: 60});
+					case 2418:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('mealie_sub14'), 0.02, 0.6);				
+				}
+			case 'indignancy':
+				switch (curStep)
+				{
+					case 128:
+						FlxTween.tween(vignette, {alpha: 0}, 1);
+					case 124 | 304 | 496 | 502 | 576 | 848:
+						defaultCamZoom += 0.2;
+					case 176:
+						defaultCamZoom -= 0.2;
+						crazyZooming = true;
+					case 320 | 832 | 864:
+						defaultCamZoom -= 0.2;
+					case 508:
+						defaultCamZoom -= 0.4;		
+					case 320 | 864:
+						crazyZooming = true;	
+					case 304 | 832 | 1088 | 2144:
+						crazyZooming = false;
+					case 1216:
+						defaultCamZoom += 0.2;
+						black = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+						black.screenCenter();
+						black.alpha = 0;
+						add(black);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						makeInvisibleNotes(true);
+					case 1217:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('indignancy_sub1'), 0.02, 2);
+					case 1262:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('indignancy_sub2'), 0.02, 1.5);
+					case 1292:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('indignancy_sub3'), 0.02, 1);
+					case 1330:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('indignancy_sub4'), 0.02, 0.5);
+				    case 1344:
+						defaultCamZoom -= 0.2;
+						FlxTween.tween(black, {alpha: 0}, 1);
+						makeInvisibleNotes(false);
+					case 1622:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('indignancy_sub5'), 0.02, 0.3);
+						
+						defaultCamZoom += 0.4;
+						FlxG.camera.shake(0.015, 0.6);
+						dad.canDance = false;
+						dad.playAnim('scream', true);
+						dad.animation.finishCallback = function(animation:String)
+						{
+							dad.canDance = true;
+						}
+					case 1632:
+						defaultCamZoom -= 0.4;
+						crazyZooming = true;
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+				}
+				switch (curBeat)
+				{
+					case 335:
+						if (!spotLightPart)
+						{
+							spotLightPart = true;
+							FlxG.camera.flash(FlxColor.WHITE, 0.5);
+	
+							spotLight = new FlxSprite().loadGraphic(Paths.image('spotLight'));
+							spotLight.blend = BlendMode.ADD;
+							spotLight.setGraphicSize(Std.int(spotLight.width * (dad.frameWidth / spotLight.width) * spotLightScaler));
+							spotLight.updateHitbox();
+							spotLight.alpha = 0;
+							spotLight.origin.set(spotLight.origin.x,spotLight.origin.y - (spotLight.frameHeight / 2));
+							add(spotLight);
+	
+							spotLight.setPosition(dad.getGraphicMidpoint().x - spotLight.width / 2, dad.getGraphicMidpoint().y + dad.frameHeight / 2 - (spotLight.height));
+	
+							updateSpotlight(false);
+							
+							FlxTween.tween(black, {alpha: 0.6}, 1);
+							FlxTween.tween(spotLight, {alpha: 1}, 1);
+						}
+					case 408:
+						spotLightPart = false;
+						FlxTween.tween(spotLight, {alpha: 0}, 1, {onComplete: function(tween:FlxTween)
+						{
+							remove(spotLight);
+						}});
+						FlxTween.tween(black, {alpha: 0}, 1);
+				}
+			case 'exploitation':
+				switch(curStep)
+				{
+					case 12, 18, 23:
+						blackScreen.alpha = 1;
+						FlxTween.tween(blackScreen, {alpha: 0}, Conductor.crochet / 1000);
+						FlxG.sound.play(Paths.sound('static'), 0.5);
+
+						creditsPopup.switchHeading({path: 'songHeadings/glitchHeading', antiAliasing: false, animation: 
+						new Animation('glitch', 'glitchHeading', 24, true, [false, false]), iconOffset: 0});
+						
+						creditsPopup.changeText('', 'none', false);
+					case 20:
+						creditsPopup.switchHeading({path: 'songHeadings/expungedHeading', antiAliasing: true,
+						animation: new Animation('expunged', 'Expunged', 24, true, [false, false]), iconOffset: 0});
+
+						creditsPopup.changeText('Song by Oxygen', 'Oxygen');
+					case 14, 24:
+						creditsPopup.switchHeading({path: 'songHeadings/expungedHeading', antiAliasing: true,
+						animation: new Animation('expunged', 'Expunged', 24, true, [false, false]), iconOffset: 0});
+
+						creditsPopup.changeText('Song by EXPUNGED', 'whoAreYou');
+					case 32 | 512:
+						FlxTween.tween(boyfriend, {alpha: 0}, 3);
+						FlxTween.tween(gf, {alpha: 0}, 3);
+						defaultCamZoom = FlxG.camera.zoom + 0.3;
+						FlxTween.tween(FlxG.camera, {zoom: FlxG.camera.zoom + 0.3}, 4);
+					case 128 | 576:
+						defaultCamZoom = FlxG.camera.zoom - 0.3;
+						FlxTween.tween(boyfriend, {alpha: 1}, 0.2);
+						FlxTween.tween(gf, {alpha: 1}, 0.2);
+						FlxTween.tween(FlxG.camera, {zoom: FlxG.camera.zoom - 0.3}, 0.05);
+						mcStarted = true;
+
+					case 184 | 824:
+						FlxTween.tween(FlxG.camera, {angle: 10}, 0.1);
+					case 188 | 828:
+						FlxTween.tween(FlxG.camera, {angle: -10}, 0.1);
+					case 192 | 832:
+						FlxTween.tween(FlxG.camera, {angle: 0}, 0.2);
+					case 1276:
+						FlxG.camera.fade(FlxColor.WHITE, (Conductor.stepCrochet / 1000) * 4, false, function()
+						{
+							FlxG.camera.stopFX();
+						});
+						FlxG.camera.shake(0.015, (Conductor.stepCrochet / 1000) * 4);
+					case 1280:
+						shakeCam = true;
+						FlxG.camera.zoom -= 0.2;
+
+						windowProperties = [
+							Application.current.window.x,
+							Application.current.window.y,
+							Application.current.window.width,
+							Application.current.window.height
+						];
+
+						#if windows
+						if (modchartoption) popupWindow();
+						#end
+						
+						modchart = ExploitationModchartType.Figure8;
+						if (modchartoption) {
+							dadStrums.forEach(function(strum:StrumNote)
+							{
+								strum.resetX();
+							});
+							playerStrums.forEach(function(strum:StrumNote)
+							{
+								strum.resetX();
+							});
+						}
+
+					case 1282:
+						expungedBG.loadGraphic(Paths.image('backgrounds/void/exploit/broken_expunged_chain', 'shared'));
+						expungedBG.setGraphicSize(Std.int(expungedBG.width * 2));
+					case 1311:
+						shakeCam = false;
+						FlxG.camera.zoom += 0.2;	
+					case 1343:
+						shakeCam = true;
+						FlxG.camera.zoom -= 0.2;	
+					case 1375:
+						shakeCam = false;
+						FlxG.camera.zoom += 0.2;
+					case 1487:
+						shakeCam = true;
+						FlxG.camera.zoom -= 0.2;
+					case 1503:
+						shakeCam = false;
+						FlxG.camera.zoom += 0.2;
+					case 1536:						
+						expungedBG.loadGraphic(Paths.image('backgrounds/void/exploit/creepyRoom', 'shared'));
+						expungedBG.setGraphicSize(Std.int(expungedBG.width * 2));
+						expungedBG.setPosition(0, 200);
+						
+						modchart = ExploitationModchartType.Sex;
+						if (modchartoption) {
+							dadStrums.forEach(function(strum:StrumNote)
+							{
+								strum.resetX();
+							});
+							playerStrums.forEach(function(strum:StrumNote)
+							{
+								strum.resetX();
+							});
+						}
+					case 2080:
+						#if windows
+						if (window != null)
+						{
+							window.close();
+							expungedWindowMode = false;
+							window = null;
+							FlxTween.tween(Application.current.window, {x: windowProperties[0], y: windowProperties[1], width: windowProperties[2], height: windowProperties[3]}, 1, {ease: FlxEase.circInOut});
+							FlxTween.tween(iconP2, {alpha: 0}, 1, {ease: FlxEase.bounceOut});
+						}
+						#end
+					case 2083:
+						PlatformUtil.sendWindowsNotification("Anticheat.dll", "Threat expunged.dat successfully contained.");
+				}
+			case 'shredder':
+				switch (curStep)
+				{
+					case 261:
+						defaultCamZoom += 0.2;
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						black = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+						black.screenCenter();
+						black.scrollFactor.set();
+						black.alpha = 0;
+						add(black);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						makeInvisibleNotes(true);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('shred_sub1'), 0.02, 0.3);
+					case 273:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('shred_sub2'), 0.02, 0.6);
+					case 296:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('shred_sub3'), 0.02, 0.6);
+					case 325:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('shred_sub4'), 0.02, 0.6);
+					case 342:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('shred_sub5'), 0.02, 0.6);
+					case 356:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('shred_sub6'), 0.02, 0.6);
+					case 361:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('shred_sub7'), 0.02, 0.6);
+					case 384:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('shred_sub8'), 0.02, 0.6, {subtitleSize: 60});
+					case 393:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('shred_sub9'), 0.02, 0.6, {subtitleSize: 60});
+					case 408:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('shred_sub10'), 0.02, 0.6, {subtitleSize: 60});
+					case 425:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('shred_sub11'), 0.02, 0.6, {subtitleSize: 60});
+					case 484:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('shred_sub12'), 0.02, 0.6, {subtitleSize: 60});
+					case 512:
+						defaultCamZoom -= 0.2;
+						FlxG.camera.flash();
+						FlxTween.tween(black, {alpha: 0}, 1);
+						makeInvisibleNotes(false);
+					case 784 | 816 | 912 | 944:
+						#if SHADERS_ENABLED
+						camHUD.setFilters([new ShaderFilter(blockedShader.shader)]);
+						#end
+						defaultCamZoom += 0.2;
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+					case 800 | 832 | 928:
+						camHUD.setFilters([]);
+						defaultCamZoom -= 0.2;
+						FlxTween.tween(black, {alpha: 0}, 1);
+					case 960:
+						camHUD.setFilters([]);
+						defaultCamZoom = 0.7;
+						FlxTween.tween(black, {alpha: 0}, 1);
+					case 992:
+						dadStrums.forEach(function(spr:StrumNote)
+						{
+							FlxTween.tween(spr, {alpha: 0}, 1);
+						});
+					case 1008:
+						switchDad('bambi-shredder', dad.getPosition());
+						dad.playAnim('takeOut', true);
+
+					case 1024:
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+
+						playerStrums.forEach(function(spr:StrumNote)
+						{
+							FlxTween.cancelTweensOf(spr);
+						});
+
+						dadStrums.forEach(function(spr:StrumNote)
+						{
+							spr.alpha = 1;
+						});
+						
+						lockCam = true;
+						
+						originalBFScale = boyfriend.scale.copyTo(originalBFScale);
+						originBFPos = boyfriend.getPosition();
+						originBambiPos = dad.getPosition();
+
+						dad.cameras = [camHUD];
+						dad.scale.set(dad.scale.x * 0.55, dad.scale.y * 0.55);
+						dad.updateHitbox();
+						dad.offsetScale = 0.55;
+						dad.scrollFactor.set();
+						dad.setPosition(-21, -10);
+
+						bambiSpot = new FlxSprite(34, 151).loadGraphic(Paths.image('festival/shredder/bambi_spot'));
+						bambiSpot.scrollFactor.set();
+						bambiSpot.blend = BlendMode.ADD;
+						bambiSpot.cameras = [camHUD];
+						insert(members.indexOf(dadGroup), bambiSpot);
+
+						bfSpot = new FlxSprite(995, 381).loadGraphic(Paths.image('festival/shredder/boyfriend_spot'));
+						bfSpot.scrollFactor.set();
+						bfSpot.blend = BlendMode.ADD;
+						bfSpot.cameras = [camHUD];
+						bfSpot.alpha = 0;
+
+						boyfriend.cameras = [camHUD];
+						boyfriend.scale.set(boyfriend.scale.x * 0.45, boyfriend.scale.y * 0.45);
+						boyfriend.updateHitbox();
+						boyfriend.offsetScale = 0.45;
+						boyfriend.scrollFactor.set();
+						boyfriend.setPosition((bfSpot.x - (boyfriend.width / 3.25)) + boyfriend.globalOffset[0] * boyfriend.offsetScale, (bfSpot.y - (boyfriend.height * 1.1)) + boyfriend.globalOffset[1] * boyfriend.offsetScale);
+						if (isShaggy) boyfriend.y += 100;
+						shx = (bfSpot.x - (boyfriend.width / 3.25)) + boyfriend.globalOffset[0] * boyfriend.offsetScale;
+						shy = (bfSpot.y - (boyfriend.height * 1.1)) + boyfriend.globalOffset[1] * boyfriend.offsetScale;
+						boyfriend.alpha = 0;
+
+						insert(members.indexOf(bfGroup), bfSpot);
+
+						highway = new FlxSprite().loadGraphic(Paths.image('festival/shredder/ch_highway'));
+						highway.setGraphicSize(Std.int(highway.width * (670 / highway.width)), Std.int(highway.height * (1340 / highway.height)));
+						highway.updateHitbox();
+						highway.cameras = [camHUD];
+						highway.screenCenter();
+						highway.scrollFactor.set();
+						insert(members.indexOf(strumLineNotes), highway);
+
+						black = new FlxSprite().makeGraphic(2560, 1440, FlxColor.BLACK);
+						black.screenCenter();
+						black.scrollFactor.set();
+						black.alpha = 0.9;
+						insert(members.indexOf(highway), black);
+
+						dadStrums.forEach(function(spr:StrumNote)
+						{
+							dadStrums.remove(spr);
+							strumLineNotes.remove(spr);
+							remove(spr);
+						});
+						generateGhNotes(0);
+						
+						dadStrums.forEach(function(spr:StrumNote)
+						{
+							spr.centerStrum();
+							spr.x -= (spr.width / 4);
+						});
+						playerStrums.forEach(function(spr:StrumNote)
+						{
+							spr.centerStrum();
+							spr.alpha = 0;
+							spr.x -= (noteWidth / 4);
+						});
+					case 1276:
+						dadStrums.forEach(function(spr:StrumNote)
+						{
+							FlxTween.tween(spr, {alpha: 0}, (Conductor.stepCrochet / 1000) * 2);
+						});
+						playerStrums.forEach(function(spr:StrumNote)
+						{
+							FlxTween.tween(spr, {alpha: 1}, (Conductor.stepCrochet / 1000) * 2);
+						});
+					case 1280:
+						FlxTween.tween(boyfriend, {alpha: 1}, 1);
+						FlxTween.tween(bfSpot, {alpha: 1}, 1);
+					case 1536:
+						var blackFront = new FlxSprite(0, 0).makeGraphic(2560, 1440, FlxColor.BLACK);
+						blackFront.screenCenter();
+						blackFront.alpha = 0;
+						blackFront.cameras = [camHUD];
+						add(blackFront);
+						FlxTween.tween(blackFront, {alpha: 1}, 0.5, {onComplete: function(tween:FlxTween)
+						{
+							lockCam = false;
+							strumLineNotes.forEach(function(spr:StrumNote)
+							{
+								spr.x = spr.baseX;
+							});
+							switchDad('bambi-new', originBambiPos, false);
+
+							boyfriend.cameras = dad.cameras;
+							boyfriend.scale.set(originalBFScale.x, originalBFScale.y);
+							boyfriend.updateHitbox();
+							boyfriend.offsetScale = 1;
+							boyfriend.scrollFactor.set(1, 1);
+							boyfriend.setPosition(originBFPos.x, originBFPos.y);
+							shx = originBFPos.x;
+							shy = originBFPos.y;
+								
+							for (hudElement in [black, blackFront, bambiSpot, bfSpot, highway])
+							{
+								remove(hudElement);
+							}
+							FlxTween.tween(blackFront, {alpha: 0}, 0.5);
+						}});
+						regenerateStaticArrows(0);
+
+						defaultCamZoom += 0.2;
+						#if SHADERS_ENABLED
+						if(CompatTool.save.data.compatMode != null && CompatTool.save.data.compatMode == false)
+						{
+							camHUD.setFilters([new ShaderFilter(blockedShader.shader)]);
+						}
+						#end
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						makeInvisibleNotes(true);
+					case 1552:
+						camHUD.setFilters([]);
+						defaultCamZoom += 0.1;
+					case 1568:
+						#if SHADERS_ENABLED
+						if(CompatTool.save.data.compatMode != null && CompatTool.save.data.compatMode == false)
+							{
+								camHUD.setFilters([new ShaderFilter(blockedShader.shader)]);
+							}
+						#end
+						defaultCamZoom += 0.1;
+					case 1584:
+						camHUD.setFilters([]);
+						defaultCamZoom += 0.1;
+					case 1600:
+						#if SHADERS_ENABLED
+						if(CompatTool.save.data.compatMode != null && CompatTool.save.data.compatMode == false)
+							{
+								camHUD.setFilters([new ShaderFilter(blockedShader.shader)]);
+							}
+						#end
+						defaultCamZoom += 0.1;
+					case 1616:
+						camHUD.setFilters([]);
+						defaultCamZoom += 0.1;
+					case 1632:
+						#if SHADERS_ENABLED
+						if(CompatTool.save.data.compatMode != null && CompatTool.save.data.compatMode == false)
+							{
+								camHUD.setFilters([new ShaderFilter(blockedShader.shader)]);
+							}
+						#end
+						defaultCamZoom += 0.1;
+					case 1648:
+						FlxTween.tween(black, {alpha: 1}, 1);
+						camHUD.setFilters([]);
+						defaultCamZoom += 0.1;
+					case 1664:
+						defaultCamZoom -= 0.9;
+						FlxG.camera.flash();
+						FlxTween.tween(black, {alpha: 0}, 1);
+						makeInvisibleNotes(false);
+					case 1937:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('shred_sub13'), 0.02, 0.6, {subtitleSize: 60});
+					case 1946:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('shred_sub14'), 0.02, 0.6, {subtitleSize: 60});
+				}
+			case 'rano':
+				switch (curStep)
+				{
+					case 512:
+						defaultCamZoom = 0.9;
+					case 640:
+						defaultCamZoom = 0.7;
+					case 1792:
+						dad.canDance = false;
+						dad.canSing = false;
+						dad.playAnim('sleepIdle', true);
+						dad.animation.finishCallback = function(anim:String)
+						{
+							dad.playAnim('sleeping', true);
+						}
+				}
+			case 'five-nights':
+				if (!powerRanOut)
+				{
+					switch (curStep)
+					{
+						case 60:
+							switchNoteSide();
+						case 64 | 320 | 480 | 576 | 704 | 832 | 1024:
+							nofriendAttack();
+						case 992:
+							defaultCamZoom = 1.2;
+							FlxTween.tween(camHUD, {alpha: 0}, 1);
+						case 1088:
+							sixAM();
+					}
+				}
+			case 'bot-trot':
+				switch (curStep)
+				{
+					case 896:
+						FlxG.camera.flash();
+						FlxG.sound.play(Paths.sound('lightswitch'), 1);
+						defaultCamZoom = 1.1;
+						switchToNight();
+					case 1151:
+						defaultCamZoom = 0.8;
+				}
+			case 'supernovae' | 'old-supernovae':
+				switch (curStep)
+				{
+					case 60:
+						dad.playAnim('hey', true);
+					case 64:
+						defaultCamZoom = 1;
+					case 192:
+						defaultCamZoom = 0.9;
+					case 320 | 768:
+						defaultCamZoom = 1.1;
+					case 444:
+						defaultCamZoom = 0.6;
+					case 448 | 960 | 1344:
+						defaultCamZoom = 0.8;
+					case 896 | 1152:
+						defaultCamZoom = 1.2;
+					case 1024:
+						defaultCamZoom = 1;
+						shakeCam = true;
+						FlxTween.linearMotion(dad, dad.x, dad.y, 25, 50, 15, true);
+
+					case 1280:
+						FlxTween.linearMotion(dad, dad.x, dad.y, 50, 280, 0.6, true);
+						shakeCam = false;
+						defaultCamZoom = 1;
+				}
+			case 'master':
+				switch (curStep)
+				{
+					case 128:
+						defaultCamZoom = 0.7;
+					case 252 | 512:
+						defaultCamZoom = 0.4;
+						shakeCam = false;
+					case 256:
+						defaultCamZoom = 0.8;
+					case 380:
+						defaultCamZoom = 0.5;
+					case 384:
+						defaultCamZoom = 1;
+						shakeCam = true;
+					case 508:
+						defaultCamZoom = 1.2;
+					case 560:
+						dad.playAnim('die', true);			
+						FlxG.sound.play(Paths.sound('dead'), 1);
+					}
+			case 'vs-dave-rap':
+				switch(curStep)
+				{
+						case 64:
+							FlxG.camera.flash();
+						case 68:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('daverap_sub1'), 0.02, 1);
+						case 92:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('daverap_sub2'), 0.02, 0.8);
+						case 112:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('daverap_sub3'), 0.02, 0.8);
+						case 124:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('daverap_sub4'), 0.02, 0.5);
+						case 140:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('daverap_sub5'), 0.02, 0.5);
+						case 150:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('daverap_sub6'), 0.02, 1);
+						case 176:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('daverap_sub7'), 0.02, 0.5);
+						case 184:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('daverap_sub8'), 0.02, 0.8);
+						case 201:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('daverap_sub9'), 0.02, 0.5);
+						case 211:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('daverap_sub10'), 0.02, 0.8);
+						case 229:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('daverap_sub11'), 0.02, 0.5);
+						case 241:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('daverap_sub12'), 0.02, 0.8);
+						case 260:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('daverap_sub13'), 0.02, 0.8);
+						case 281:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('daverap_sub14'), 0.02, 0.5);
+						case 288:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('daverap_sub15'), 0.02, 1.5);
+						case 322:
+							FlxG.camera.flash();
+					}
+		    case 'vs-dave-rap-two':
+				switch(curStep)
+			    {
+					case 62:
+						FlxG.camera.flash();
+						subtitleManager.addSubtitle(LanguageManager.getTextString('daveraptwo_sub1'), 0.02, 0.5);
+					case 79:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('daveraptwo_sub2'), 0.02, 0.3);
+					case 88:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('daveraptwo_sub3'), 0.02, 1.5);
+					case 112:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('daveraptwo_sub4'), 0.02, 1.5);
+					case 140:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('daveraptwo_sub5'), 0.02, 1);
+					case 168:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('daveraptwo_sub6'), 0.02, 0.7);
+					case 179:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('daveraptwo_sub7'), 0.02, 0.7);
+					case 194:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('daveraptwo_sub8'), 0.02, 1.5);
+					case 222:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('daveraptwo_sub9'), 0.02, 2);
+					case 256:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('daveraptwo_sub10'), 0.02, 2);	
+					case 291:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('daveraptwo_sub11'), 0.02, 1);
+					case 342:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('daveraptwo_sub12'), 0.02, 1);
+					case 351:
+						FlxG.camera.flash();
+				}
+			case 'memory':
+				switch (curStep)
+				{
+					case 1408:
+						defaultCamZoom += 0.2;
+						black = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+						black.screenCenter();
+						black.alpha = 0;
+						add(black);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						makeInvisibleNotes(true);
+					case 1422:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('memory_sub1'), 0.02, 0.5);
+					case 1436:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('memory_sub2'), 0.02, 1);
+					case 1458:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('memory_sub3'), 0.02, 0.7);
+					case 1476:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('memory_sub4'), 0.02, 1);
+					case 1508:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('memory_sub5'), 0.02, 1.5);
+					case 1541:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('memory_sub6'), 0.02, 1);
+					case 1561:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('memory_sub7'), 0.02, 1);
+					case 1583:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('memory_sub8'), 0.02, 0.8);
+					case 1608:
+						defaultCamZoom -= 0.2;
+						FlxTween.tween(black, {alpha: 0}, 1);
+						makeInvisibleNotes(false);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('memory_sub9'), 0.02, 1);
+					case 1632:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('memory_sub10'), 0.02, 0.5);
+					case 1646:
+						defaultCamZoom += 0.2;
+						black = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+						black.screenCenter();
+						black.alpha = 0;
+						add(black);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						makeInvisibleNotes(true);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('memory_sub11'), 0.02, 1);
+					case 1664:
+						defaultCamZoom -= 0.2;
+						FlxTween.tween(black, {alpha: 0}, 1);
+						makeInvisibleNotes(false);
+				}
+			case 'bananacore':
+				switch (curStep)
+				{
+					case 160 | 436 | 684:
+						gfSpeed = 2;
+					case 240:
+						gfSpeed = 1;
+					case 480:
+						//swapDad("bartholemew");
+						switchDad('bartholemew', dad.getPosition(), false);
+					case 512:
+						switchDad('older-cockey', dad.getPosition(), false);
+					case 768:
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						weirdBG.loadGraphic(Paths.image('backgrounds/void/bananaVoid2'));
+					case 822:
+						trace("Phase 2");
+						sexDad = new Character(dad.x - 700, dad.y, "older-cockey");
+						add(sexDad);
+						dad.alpha = 0;
+					case 842:
+						switchDad('old-pissey', dad.getPosition(), false);
+						dad.alpha = 0;
+						FlxTween.tween(dad, {alpha: 1}, 5);
+					case 1530:
+						shag = new FlxSprite().loadGraphic(Paths.image("eletric-cockadoodledoo/shaggy from fnf 1", 'shared'));
+						shag.screenCenter();
+						shag.alpha = 0;
+						add(shag);
+						trace("Shaggy Fade In");
+						FlxTween.tween(shag, {alpha: 1}, 3);
+					case 1550:
+						remove(shag);
+					case 1643:
+						for (sprite in cuzsieKapiEletricCockadoodledoo)
+						{
+							sprite.visible = true;
+						}
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						switchDad('cuzsiee', dad.getPosition(), false);
+						switchBF('kapi', boyfriend.getPosition(), false);
+	
+						trace("Kapi BG");
+	
+						defaultCamZoom += 0.2;
+					case 1664:
+						for (sprite in cuzsieKapiEletricCockadoodledoo)
+						{
+							sprite.visible = false;
+						}
+						switchDad('old-pissey', dad.getPosition(), false);
+						switchBF('bf', boyfriend.getPosition(), false);
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+	
+						trace("Reset Kapi BG");
+	
+						defaultCamZoom -= 0.2;
+					case 1858:
+						trace("BF Float");
+						FlxTween.tween(boyfriend, {y: boyfriend.y - 700}, 8);
+					case 1985:
+						boyfriend.y = boyfriend.y + 700;
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						weirdBG.loadGraphic(Paths.image('backgrounds/void/bananaVoid3'));
+						trace("Phase 3");
+					case 2112:
+						FlxG.camera.flash(FlxColor.WHITE, 0.25);
+						dad.visible = false;
+						sexDad.visible = false;
+					case 2201:
+						switchDad('bambi-unfair-old', dad.getPosition(), false);	
+						dad.alpha = 0;
+						FlxTween.tween(dad, {alpha: 1}, 0.5);
+					case 2624:
+						indihome = new FlxSprite().loadGraphic(Paths.image("eletric-cockadoodledoo/indihome", 'shared'));
+						indihome.screenCenter();
+						indihome.cameras = [camHUD];
+						indihome.antialiasing = FlxG.save.data.globalAntialiasing;
+						add(indihome);
+						trace("Indihome");
+					case 2688:
+						remove(indihome);
+					case 2818 | 2945:
+						switchDad('bambi-new', dad.getPosition(), false);
+					case 2848 | 2945:
+						switchDad('bambi-unfair-old', dad.getPosition(), false);
+					case 2875:
+						switchDad('ayo-the-pizza-here', dad.getPosition(), false);
+	
+						dad.playAnim('pizza');
+	
+						trace("Ayo the pizza here");
+					case 2880:
+						switchDad('bambi-unfair-old', dad.getPosition(), false);
+					case 2911:
+						switchDad('bambi-unfair-old', dad.getPosition(), false);
+					case 2912:
+						switchDad('expunged', dad.getPosition(), false);
+					case 2988:
+						switchDad('ayo-the-pizza-here', dad.getPosition(), false);
+	
+						dad.playAnim('pizza');
+	
+						trace("Ayo the pizza here");
+					case 3008:
+						switchDad('bambi-unfair-old', dad.getPosition(), false);
+					case 2201:	
+						switchDad('bambi-unfair-old', dad.getPosition(), false);
+						dad.alpha = 0;
+					case 3200:
+						// re-using indihome bc im lazy as fuck
+						indihome = new FlxSprite().loadGraphic(Paths.image("eletric-cockadoodledoo/muffin", 'shared'));
+						indihome.antialiasing = FlxG.save.data.globalAntialiasing;
+						indihome.screenCenter();
+						indihome.cameras = [camHUD];
+						add(indihome);
+	
+						trace("EGG McMuffin");
+					case 3328:
+						remove(indihome);
+						camHUD.visible = false;
+						boyfriend.playAnim("firstDeath");
+						boyfriend.canDance = false;
+	
+						trace("Death Animation");
+					case 3360:
+						boyfriend.playAnim("deathLoop");
+	
+						trace("Death Loop");
+					case 3392:
+						camHUD.visible = true;
+						boyfriend.playAnim("idle");
+						boyfriend.canDance = true;
+					case 3696:
+						hideStuff = new FlxSprite().makeGraphic(2560, 1440, FlxColor.BLACK);
+						hideStuff.screenCenter();
+						add(hideStuff);
+						camHUD.visible = false;
+					case 3728:
+						camHUD.visible = true;
+						camHUD.alpha = 0;
+	
+						dadStrums.forEach(function(spr:FlxSprite)
+						{
+							spr.alpha = 0;
+						});
+	
+						FlxTween.tween(camHUD, {alpha: 1}, 3);
+					case 3568:
+						FlxTween.tween(dad, {alpha: 0}, 6);
+					case 3685:
+						jumpscare.frames = Paths.getSparrowAtlas('fiveNights/nofriendJumpscare', 'shared');
+						jumpscare.animation.addByPrefix('scare', 'jumpscare', 24, false);
+						jumpscare.setGraphicSize(FlxG.width * 2, FlxG.height * 2);
+						jumpscare.updateHitbox();
+						jumpscare.screenCenter();
+						jumpscare.scrollFactor.set();
+						jumpscare.animation.play('scare');
+						jumpscare.antialiasing = FlxG.save.data.globalAntialiasing;
+						add(jumpscare);
+					case 3696:
+						staticBG.frames = Paths.getSparrowAtlas('fiveNights/deathStatic', 'shared');
+						staticBG.animation.addByPrefix('static', 'static', 24, true);
+						staticBG.setGraphicSize(FlxG.width * 2, FlxG.height * 2);
+						staticBG.updateHitbox();
+						staticBG.screenCenter();
+						staticBG.antialiasing = FlxG.save.data.globalAntialiasing;
+						staticBG.scrollFactor.set();
+						staticBG.animation.play('static');
+						add(staticBG);
+					case 3750:
+						remove(staticBG);
+						remove(jumpscare);	
+				}
+	
+				// Vinebooms
+				for (trigger in vineBoomTriggers)
+				{
+				if (curStep == trigger)
+				{
+					FlxG.camera.flash(FlxColor.WHITE, 0.25);
+					var sadBamb:FlxSprite = new FlxSprite().loadGraphic(Paths.image("eletric-cockadoodledoo/sad_bambi", 'shared'));
+					sadBamb.antialiasing = FlxG.save.data.globalAntialiasing;
+					sadBamb.screenCenter();
+					sadBamb.cameras = [camHUD];
+					add(sadBamb);
+	
+					FlxTween.tween(sadBamb, {alpha: 0}, 1, {onComplete: function(tween:FlxTween)
+					{
+						remove(sadBamb);
+					}});
+					}
+				}
+			case 'electric-cockaldoodledoo':
+				switch (curStep)
+				{
+					//Cockey
+					case 127:
+						dad.alpha = 1;
+						FlxG.camera.zoom += 0.5;
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+					case 150:
+						black = new FlxSprite().makeGraphic(FlxG.width * 5, FlxG.height * 5, FlxColor.BLACK);
+						black.screenCenter();
+						black.alpha = 0;
+						add(black);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub1'), 0.02, 1);
+					case 238:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub2'), 0.02, 1);
+					case 255:
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						FlxTween.tween(black, {alpha: 0}, 1);
+					case 486:
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub3'), 0.02, 1);
+					case 492:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub3.1'), 0.02, 1);
+					case 499:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub3.2'), 0.02, 1);
+					case 507:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub3.3'), 0.02, 1);
+					case 512:
+						FlxTween.tween(black, {alpha: 0}, 1);
+					case 649:
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub4'), 0.02, 1);
+					case 673:
+						FlxTween.tween(black, {alpha: 0}, 1);
+					case 832:
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						weirdBG.loadGraphic(Paths.image('backgrounds/void/bananaVoid2'));
+						trace("Phase 2");
+						sexDad = new Character(dad.x - 1000, dad.y, "cockey");
+						add(sexDad);
+						dad.alpha = 0;
+					//Pissey
+					case 842:
+						switchDad('pissey', dad.getPosition(), false);
+						dad.alpha = 0;
+						dad.playAnim('phoneOFF');
+						FlxTween.tween(dad, {alpha: 1}, 5);
+					case 920:
+						dad.playAnim('phoneAWAY');
+					case 1311:
+						FlxTween.tween(weirdBG, {alpha: 0}, 5);	
+					case 1695:
+						defaultCamZoom += 0.2;
+					case 1823:
+						defaultCamZoom -= 0.2;
+						weirdBG.alpha = 1;
+					case 1855:
+						for (sprite in cuzsieKapiEletricCockadoodledoo)
+						{
+							sprite.visible = true;
+						}
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						switchDad('cuzsiee', dad.getPosition(), false);
+						switchBF('kapi', boyfriend.getPosition(), false);
+	
+						trace("Kapi BG");
+		
+						defaultCamZoom += 0.2;
+					//Shartey
+					case 1919:
+						weirdBG.loadGraphic(Paths.image('backgrounds/void/bananaVoid2.5'));
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						for (sprite in cuzsieKapiEletricCockadoodledoo)
+						{
+							sprite.visible = false;
+						}
+						switchDad('shartey', dad.getPosition(), false);
+						switchBF('bf', boyfriend.getPosition(), false);
+	
+						trace("Reset Kapi BG");
+	
+						defaultCamZoom -= 0.2;
+						FlxG.camera.zoom += 1;
+					/*case 1920:
+						curECCCharacter = "shartey";
+						remove(dad);
+						dad = new Character(dad.x, dad.y, curECCCharacter, false);
+						add(dad);
+						iconP2.changeIcon(curECCCharacter);*/
+					case 2024:
+						FlxTween.tween(black, {alpha: 5}, 1);
+						makeInvisibleNotes(true);
+					case 2044:
+						jumpscare.frames = Paths.getSparrowAtlas('fiveNights/nofriendJumpscare', 'shared');
+						jumpscare.animation.addByPrefix('scare', 'jumpscare', 24, false);
+						jumpscare.setGraphicSize(FlxG.width * 2, FlxG.height * 2);
+						jumpscare.updateHitbox();
+						jumpscare.screenCenter();
+						jumpscare.scrollFactor.set();
+						jumpscare.animation.play('scare');
+						jumpscare.antialiasing = FlxG.save.data.globalAntialiasing;
+						add(jumpscare);
+					case 2058:
+						staticBG.frames = Paths.getSparrowAtlas('fiveNights/deathStatic', 'shared');
+						staticBG.animation.addByPrefix('static', 'static', 24, true);
+						staticBG.setGraphicSize(FlxG.width * 2, FlxG.height * 2);
+						staticBG.updateHitbox();
+						staticBG.screenCenter();
+						staticBG.scrollFactor.set();
+						staticBG.animation.play('static');
+						staticBG.antialiasing = FlxG.save.data.globalAntialiasing;
+						add(staticBG);
+					case 2080:
+						makeInvisibleNotes(false);
+						FlxTween.tween(black, {alpha: 0}, 1);
+						remove(jumpscare);
+						remove(staticBG);
+					case 2144:
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub5'), 0.02, 1);
+					case 2176:
+						FlxTween.tween(black, {alpha: 0}, 1);
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+					case 3712:
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub6'), 0.02, 1);
+					case 3744:
+						FlxTween.tween(black, {alpha: 0}, 1);
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						switchDad('pissey', dad.getPosition(), false);
+					case 3840:
+						trace("BF Float");
+						FlxTween.tween(boyfriend, {y: boyfriend.y - 700}, 8);
+					//all of this stuff is for pooper's section	
+					case 3968:
+						makeInvisibleNotes(true);
+						boyfriend.y = boyfriend.y + 700;
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						weirdBG.loadGraphic(Paths.image('backgrounds/void/bananaVoid3'));
+						trace("Phase 3");
+					case 3988:
+						dad.flipX = !dad.flipX;
+					case 3990:
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub7'), 0.02, 1);
+					case 4051:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub7.1'), 0.02, 1);
+					case 4103:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub7.2'), 0.02, 1);
+					case 4155:
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						dad.visible = false;
+						sexDad.visible = false;
+					case 4156:
+							subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub8'), 0.02, 1);
+					case 4183:
+						makeInvisibleNotes(false);
+						switchDad('pooper', dad.getPosition(), false);	
+						dad.alpha = 0;
+						FlxTween.tween(dad, {alpha: 1}, 0.5);
+						FlxTween.tween(black, {alpha: 0}, 1);
+					case 4301:
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub9'), 0.02, 1);
+					case 4320:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub9.1'), 0.02, 1);
+					case 4352:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub9.2'), 0.02, 1);
+					case 4379:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub9.3'), 0.02, 1);
+					case 4400:
+						FlxTween.tween(black, {alpha: 0}, 1);
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+					case 4816:
+						switchDad('ayo-the-pizza-here', dad.getPosition(), false);
+	
+						dad.playAnim('pizza');
+	
+						trace("Ayo the pizza here");
+					case 4832:
+						switchDad('pooper', dad.getPosition(), false);	
+					case 4993:
+						// re-using indihome bc im lazy as fuck
+						indihome = new FlxSprite().loadGraphic(Paths.image("eletric-cockadoodledoo/muffin", 'shared'));
+						indihome.antialiasing = FlxG.save.data.globalAntialiasing;
+						indihome.screenCenter();
+						indihome.cameras = [camHUD];
+						add(indihome);
+	
+						trace("EGG McMuffin");
+					case 5102:
+						remove(indihome);
+						camHUD.visible = false;
+						boyfriend.playAnim("firstDeath");
+						boyfriend.canDance = false;
+						hideStuff = new FlxSprite().makeGraphic(2560, 1440, FlxColor.BLACK);
+						hideStuff.screenCenter();
+						add(hideStuff);
+	
+						trace("Death Animation");
+					case 5139:
+						boyfriend.playAnim("deathLoop");
+	
+						trace("Death Loop");
+					case 5155:
+						camHUD.visible = true;
+						boyfriend.playAnim("idle");
+						boyfriend.canDance = true;
+						remove(hideStuff);
+					case 5264:
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						switchBF('cockey', boyfriend.getPosition(), false);
+					case 5324:
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub10'), 0.02, 1);
+					case 5349:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub10.1'), 0.02, 1);
+					case 5372:
+						FlxTween.tween(black, {alpha: 0}, 1);
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						switchBF('bf', boyfriend.getPosition(), false);
+					case 5479:
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						switchBF('shartey-playable', boyfriend.getPosition(), false);
+					case 5501:
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub11'), 0.02, 1);
+					case 5546:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub12'), 0.02, 1);
+					case 5575:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub12.1'), 0.02, 1);
+					case 5587:
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						FlxTween.tween(black, {alpha: 0}, 1);
+					case 5750:
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						switchBF('bf', boyfriend.getPosition(), false);
+					case 5965:
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						switchDad('cockey', dad.getPosition(), false);
+					case 6074:
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						switchDad('pooper', dad.getPosition(), false);
+					case 6409:
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub13'), 0.02, 1);
+					case 6432:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('electric_cockaldoodledoo_sub13.1'), 0.02, 1);
+					case 6449:
+						FlxTween.tween(dad, {alpha: 0}, 6);
+						FlxTween.tween(black, {alpha: 0}, 1);
+						FlxTween.tween(camHUD, {alpha: 0}, 3);	
+						//camHUD.visible = true;
+						//camHUD.alpha = 0;
+							dadStrums.forEach(function(spr:FlxSprite)
+						{
+							spr.alpha = 0;
+						});
+					}
+	
+				// Vinebooms
+				for (trigger in newvineBoomTriggers)
+				{
+					if (curStep == trigger)
+					{
+						FlxG.camera.flash(FlxColor.WHITE, 0.25);
+						var sadBamb:FlxSprite = new FlxSprite().loadGraphic(Paths.image("eletric-cockadoodledoo/sad_bambi", 'shared'));
+						sadBamb.antialiasing = FlxG.save.data.globalAntialiasing;
+						sadBamb.screenCenter();
+						sadBamb.cameras = [camHUD];
+						add(sadBamb);
+	
+						FlxTween.tween(sadBamb, {alpha: 0}, 1, {onComplete: function(tween:FlxTween)
+						{
+							remove(sadBamb);
+						}});
+					}
+				}
+			case 'eletric-cockadoodledoo':
+				switch (curStep)
+				{
+					case 147:
+						FlxTween.tween(dad, {alpha: 1}, 0.5);
+					case 480:
+						switchDad('bartholemew', dad.getPosition(), false);
+					case 512:
+						switchDad('old-cockey', dad.getPosition(), false);
+					case 832:
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						weirdBG.loadGraphic(Paths.image('backgrounds/void/bananaVoid2'));
+						trace("Phase 2");
+						sexDad = new Character(dad.x - 1000, dad.y, "old-cockey");
+						add(sexDad);
+						dad.alpha = 0;
+					case 842:
+						switchDad('old-pissey', dad.getPosition(), false);
+						dad.alpha = 0;
+						FlxTween.tween(dad, {alpha: 1}, 5);
+					case 1530:
+						shag = new FlxSprite().loadGraphic(Paths.image("eletric-cockadoodledoo/shaggy from fnf 1", 'shared'));
+						shag.screenCenter();
+						shag.alpha = 0;
+						add(shag);
+						trace("Shaggy Fade In");
+						FlxTween.tween(shag, {alpha: 1}, 3);
+					case 1550:
+						remove(shag);
+					case 1655:
+						for (sprite in cuzsieKapiEletricCockadoodledoo)
+						{
+							sprite.visible = true;
+						}
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						switchDad('cuzsiee', dad.getPosition(), false);
+						switchBF('kapi', boyfriend.getPosition(), false);
+	
+						trace("Kapi BG");
+	
+						defaultCamZoom += 0.2;
+					case 1728:
+						for (sprite in cuzsieKapiEletricCockadoodledoo)
+						{
+							sprite.visible = false;
+						}
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						switchDad('old-pissey', dad.getPosition(), false);
+						switchBF('bf', boyfriend.getPosition(), false);
+	
+						trace("Reset Kapi BG");
+	
+						defaultCamZoom -= 0.2;
+					case 1984:
+						FlxG.camera.zoom += 1;
+					case 1856:
+						trace("BF Float");
+						FlxTween.tween(boyfriend, {y: boyfriend.y - 700}, 8);
+					case 1983:
+						boyfriend.y = boyfriend.y + 700;
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						weirdBG.loadGraphic(Paths.image('backgrounds/void/bananaVoid3'));
+						trace("Phase 3");
+	
+					case 2054:
+						dad.flipX = !dad.flipX;
+					case 2180:
+						sexDad.flipX = !sexDad.flipX;
+					case 2208:
+						FlxG.camera.flash(FlxColor.WHITE, 0.25);
+						dad.visible = false;
+						sexDad.visible = false;
+					case 2239:
+						switchDad('old-pooper', dad.getPosition(), false);	
+						dad.alpha = 0;
+						FlxTween.tween(dad, {alpha: 1}, 0.5);
+					case 2624:
+						indihome = new FlxSprite().loadGraphic(Paths.image("eletric-cockadoodledoo/indihome", 'shared'));
+						indihome.screenCenter();
+						indihome.cameras = [camHUD];
+						indihome.antialiasing = FlxG.save.data.globalAntialiasing;
+						add(indihome);
+						trace("Indihome");
+					case 2688:
+						remove(indihome);
+					case 2818 | 2944:
+						switchDad('bambi-new', dad.getPosition(), false);	
+					case 2848 | 2972:
+						switchDad('old-pooper', dad.getPosition(), false);	
+					case 2912:
+						switchDad('expunged', dad.getPosition(), false);	
+					case 2989:
+						switchDad('ayo-the-pizza-here', dad.getPosition(), false);
+	
+						dad.playAnim('pizza');
+	
+						trace("Ayo the pizza here");
+					case 3008:
+						switchDad('old-pooper', dad.getPosition(), false);
+					case 3200:
+						// re-using indihome bc im lazy as fuck
+						indihome = new FlxSprite().loadGraphic(Paths.image("eletric-cockadoodledoo/muffin", 'shared'));
+						indihome.antialiasing = FlxG.save.data.globalAntialiasing;
+						indihome.screenCenter();
+						indihome.cameras = [camHUD];
+						add(indihome);
+	
+						trace("EGG McMuffin");
+					case 3328:
+						remove(indihome);
+						camHUD.visible = false;
+						boyfriend.playAnim("firstDeath");
+						boyfriend.canDance = false;
+	
+						trace("Death Animation");
+					case 3360:
+						boyfriend.playAnim("deathLoop");
+	
+						trace("Death Loop");
+					case 3392:
+						camHUD.visible = true;
+						boyfriend.playAnim("idle");
+						boyfriend.canDance = true;
+					case 3696:
+						hideStuff = new FlxSprite().makeGraphic(2560, 1440, FlxColor.BLACK);
+						hideStuff.screenCenter();
+						add(hideStuff);
+						camHUD.visible = false;
+					case 3728:
+						camHUD.visible = true;
+						camHUD.alpha = 0;
+	
+						dadStrums.forEach(function(spr:FlxSprite)
+						{
+							spr.alpha = 0;
+						});
+	
+						FlxTween.tween(camHUD, {alpha: 1}, 3);
+					case 3568:
+						FlxTween.tween(dad, {alpha: 0}, 6);	
+				}
+	
+				// Vinebooms
+				for (trigger in vineBoomTriggers)
+				{
+					if (curStep == trigger)
+					{
+						FlxG.camera.flash(FlxColor.WHITE, 0.25);
+						var sadBamb:FlxSprite = new FlxSprite().loadGraphic(Paths.image("eletric-cockadoodledoo/sad_bambi", 'shared'));
+						sadBamb.antialiasing = FlxG.save.data.globalAntialiasing;
+						sadBamb.screenCenter();
+						sadBamb.cameras = [camHUD];
+						add(sadBamb);
+	
+						FlxTween.tween(sadBamb, {alpha: 0}, 1, {onComplete: function(tween:FlxTween)
+						{
+							remove(sadBamb);
+						}});
+					}
+				}
+			case 'old-glitch':
+				switch (curStep)
+				{
+					case 480 | 681 | 1390 | 1445 | 1515 | 1542 | 1598 | 1655:
+						shakeCam = true;
+						camZooming = true;
+					case 512 | 688 | 1420 | 1464 | 1540 | 1558 | 1608 | 1745:
+						shakeCam = false;
+						camZooming = false;
+				}
+			case "confronting-yourself":
+				switch(curStep)
+				{
+					case 69 /*nice*/:
+						for (spr in backgroundSprites)
+						{
+							FlxTween.tween(spr, {alpha: 0}, 2);
+						}
+				}
+			case "oppression":
+				switch(curStep)
+				{
+					case 272:
+						switchDad('bambi-3d-old', dad.getPosition(), false);
+					case 543:
+						switchDad('dave-3d-standing-bruh-what', dad.getPosition(), false);
+					case 889:
+						switchDad('bambi-old', dad.getPosition(), false);
+					case 976:
+						switchBF('dave-3d-standing-bruh-what', boyfriend.getPosition(), false);
+					case 1104:
+						switchDad('bf', dad.getPosition(), false);
+					case 1328:
+						switchDad('bambi-beta-2', dad.getPosition(), false);
+					case 1344:
+						switchBF('bf', boyfriend.getPosition(), false);
+					case 1568:
+						switchDad('bambi-3d-old', dad.getPosition(), false);
+				}
+			case 'furiosity':
+				switch (curStep)
+				{
+					case 512 | 768:
+						shakeCam = true;
+					case 640 | 896:
+						shakeCam = false;
+				}
+			case 'screwed':
+				switch (curStep)
+				{
+					case 1:
+						defaultCamZoom += 0.2;
+						black = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+						black.screenCenter();
+						black.alpha = 0;
+						add(black);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						makeInvisibleNotes(true);
+					case 128:
+						defaultCamZoom -= 0.2;
+						FlxTween.tween(black, {alpha: 0}, 1);
+						makeInvisibleNotes(false);
+					case 640:
+						defaultCamZoom += 0.2;
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						makeInvisibleNotes(true);
+					case 672:
+						defaultCamZoom -= 0.2;
+						FlxTween.tween(black, {alpha: 0}, 1);
+						makeInvisibleNotes(false);
+					case 913:
+						defaultCamZoom += 0.2;
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('screwed_sub1'), 0.02, 0.6);
+					case 960:
+						defaultCamZoom -= 0.2;
+						FlxTween.tween(black, {alpha: 0}, 1);
+					case 1184:
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						makeInvisibleNotes(true);
+				}
+			case "duper":
+				switch (curStep)
+				{
+					/*case 263 | 272 | 280 | 288 | 296 | 304 | 312 | 320 | 328 | 336 | 344 | 352 | 360 | 368 | 380 | 388 | 396 | 404 |
+					412 | 420 | 428 | 436 | 444 | 452 | 460 | 468 | 480 | 488 | 502 | 516 | 524 | 532 | 540 | 548 | 556 | 564 | 572 | 580 |
+					588 | 596 | 604 | 612 | 620 | 630 | 340 | 648 | 656 | 664 | 672 | 680 | 688 | 696 | 704 | 712 | 720 | 728 | 736 | 744 |
+					752 | 764 | 772 | 780 | 788 | 796 | 804 | 812 | 820 | 828 | 835 | 844 | 852 | 860 | 868 | 876 | 886 | 896 | 904 | 912 |
+					920 | 928 | 936 | 944 | 952 | 960 | 968 | 972 | 980 | 988 | 996 | 1004 | 1014:
+						defaultCamZoom = 1.2;
+					case 268 | 276 | 284 | 292 | 300 | 308 | 316 | 324 | 332 | 340 | 348 | 356 | 364 | 374 | 384 | 392 | 400 | 408 |
+					416 | 424 | 432 | 440 | 448 | 456 | 464 | 472 | 484 | 492 | 512 | 520 | 528 | 536 | 544 | 552 | 560 | 568 | 756 | 584 |
+					592 | 600 | 608 | 616 | 624 | 636 | 644 | 652 | 660 | 668 | 676 | 684 | 692 | 700 | 708 | 716 | 724 | 732 | 740 | 748 |
+					758 | 768 | 776 | 784 | 792 | 800 | 808 | 816 | 824 | 832 | 840 | 848 | 856 | 864 | 872 | 880 | 892 | 900 | 908 | 916 |
+					924 | 932 | 940 | 948 | 956 | 964 | 968 | 976 | 984 | 992 | 1000 | 1008 | 1020:
+						defaultCamZoom = 0.8;*/
+					case 240:
+						defaultCamZoom += 0.1;
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						black = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+						black.screenCenter();
+						black.alpha = 0;
+						add(black);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						makeInvisibleNotes(true);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('duper_sub1'), 0.02, 1);
+					case 256:
+						defaultCamZoom -= 0.1;
+						FlxG.camera.flash();
+						FlxTween.tween(black, {alpha: 0}, 1);
+						makeInvisibleNotes(false);
+					case 1024:
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						defaultCamZoom = 0.65;
+					case 1282:
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						defaultCamZoom = 0.8;
+					case 1536:
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						makeInvisibleNotes(true);
+					case 1536 | 1664:
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+					case 1781:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('duper_sub2'), 0.02, 1);
+					case 1792:
+						FlxTween.tween(black, {alpha: 0}, 1);
+						makeInvisibleNotes(false);
+					case 2016:
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+					case 2026:
+						makeInvisibleNotes(true);
+					case 2032:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('duper_sub3'), 0.02, 1);
+					case 2044:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('duper_sub4'), 0.02, 1);
+					case 2048:
+						FlxTween.tween(black, {alpha: 0}, 1);
+						makeInvisibleNotes(false);
+					case 2780:
+						FlxTween.tween(black, {alpha: 0.4}, 1);
+						defaultCamZoom += 0.3;
+					/*case 2784:
+						#if SHADERS_ENABLED
+						if(CompatTool.save.data.compatMode != null && CompatTool.save.data.compatMode == false)
+							{
+								camHUD.setFilters([new ShaderFilter(blockedShader.shader)]);
+							}
+						#end
+						FlxTween.tween(black, {alpha: 0.7}, (Conductor.stepCrochet / 1000) * 8);*/
+					case 2800:
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						camHUD.setFilters([]);
+						remove(black);
+						defaultCamZoom -= 0.3;
+				}
+			case 'bonkers':
+				switch (curStep)
+				{
+					case 96:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('bonkers_sub1'), 0.02, 1);
+						black = new FlxSprite().makeGraphic(FlxG.width * 5, FlxG.height * 5, FlxColor.BLACK);
+						black.screenCenter();
+						black.alpha = 0;
+						add(black);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+					case 112:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('bonkers_sub2'), 0.02, 1);
+					case 128:
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						FlxTween.tween(black, {alpha: 0}, 1);
+					case 1152 | 1160 | 1172 | 1177 | 1184 | 1192 | 1205 | 1209 | 1216 | 1224 | 1237 | 1241 | 1248 | 1257 | 1270 | 1273:
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+					case 1024:
+						defaultCamZoom += 0.1;
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						makeInvisibleNotes(true);
+					case 1277:
+						defaultCamZoom -= 0.1;
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						FlxTween.tween(black, {alpha: 0}, 1);
+						makeInvisibleNotes(false);
+				}
+			case 'cuzsie-x-kapi-shipping-cute':
+				switch (curStep)
+				{
+					case 425:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('cuzsie_x_kapi_shipping_cute_sub1'), 0.02, 1);
+						black = new FlxSprite().makeGraphic(FlxG.width * 5, FlxG.height * 5, FlxColor.BLACK);
+						black.screenCenter();
+						black.alpha = 0;
+						add(black);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+					case 443:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('cuzsie_x_kapi_shipping_cute_sub3'), 0.02, 1);
+					case 494:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('cuzsie_x_kapi_shipping_cute_sub4'), 0.02, 1);
+					case 507:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('cuzsie_x_kapi_shipping_cute_sub5'), 0.02, 1);
+					case 528:
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						FlxTween.tween(black, {alpha: 0}, 1);
+				}
+			case 'foolhardy':
+				switch (curStep)
+				{
+					case 1:
+						FlxTween.tween(dad, {alpha: 1}, 5);
+					case 266:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('foolhardy_sub1'), 0.02, 1);
+						black = new FlxSprite().makeGraphic(FlxG.width * 5, FlxG.height * 5, FlxColor.BLACK);
+						black.screenCenter();
+						black.alpha = 0;
+						add(black);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+					case 290:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('foolhardy_sub1.1'), 0.02, 1);
+					case 512:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('foolhardy_sub2'), 0.02, 1);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+					case 544:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('foolhardy_sub2.1'), 0.02, 1);
+					case 1045:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('foolhardy_sub3'), 0.02, 1);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+					case 1408:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('foolhardy_sub4'), 0.02, 1);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+					case 1450:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('foolhardy_sub4.1'), 0.02, 1);
+					case 2062:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('foolhardy_sub5'), 0.02, 1);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+					case 2304:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('foolhardy_sub6'), 0.02, 1);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+					case 2352:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('foolhardy_sub6.1'), 0.02, 1);
+					case 311 | 576 | 1088 | 1472 | 2112 | 2368:
+						FlxTween.tween(black, {alpha: 0}, 1);
+					case 2427 | 2428 | 2429 | 2430:
+						FlxG.camera.shake(0.05);
+						dad.alpha -= 0.05;
+					case 2432 | 2434 | 2435 | 2436 | 2437 | 2438 | 2439 | 2440:
+						dad.alpha = 0.6;
+						FlxG.camera.stopFX();
+					case 2943 | 2946 | 2948 | 2950 | 2452 | 2454:
+						dad.alpha -= 0.2;
+					case 2961:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('foolhardy_sub7'), 0.02, 1);
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+				}
+			case 'importumania':
+				switch (curStep)
+				{
+					// Bambi
+					case 1:
+						iconP2.alpha = 0;
+						iconP1.alpha = 0;
+						switchDad('bambi-angey', dad.getPosition(), false);
+						dad.alpha = 0;
+					case 128:
+						for (sprite in bambiFarmDream)
+						{
+							sprite.visible = true;
+						}
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						makeInvisibleNotes(false);
+						FlxTween.tween(camHUD, {alpha: 1}, 5);
+						dad.y += 370;
+						dad.x += 200;
+
+						trace("Bambi Farm");
+					case 160:
+						FlxTween.tween(dad, {alpha: 1}, 5);
+						FlxTween.tween(iconP2, {alpha: 1}, 5);
+					case 179:
+						FlxTween.tween(gf, {alpha: 1}, 5);
+					case 192:
+						FlxTween.tween(boyfriend, {alpha: 1}, 5);
+						FlxTween.tween(iconP1, {alpha: 1}, 5);
+					case 256 | 1664:
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+					case 1344:
+						FlxTween.tween(dad, {alpha: 0}, 6);
+						FlxTween.tween(iconP2, {alpha: 0}, 6);
+					case 1408:
+						black = new FlxSprite().makeGraphic(FlxG.width * 5, FlxG.height * 5, FlxColor.BLACK);
+						black.screenCenter();
+						black.alpha = 0;
+						add(black);
+						FlxTween.tween(black, {alpha: 5}, 1);
+						makeInvisibleNotes(true);
+						FlxTween.tween(camHUD, {alpha: 0}, 5);
+					case 1521:
+						for (sprite in bambiFarmDream)
+						{
+							sprite.visible = false;
+						}
+						trace("Bambi Farm is just a dream...");
+					// Dave
+					case 1536:
+						for (sprite in daveHouseDream)
+							{
+								sprite.visible = true;
+							}
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						makeInvisibleNotes(false);
+						FlxTween.tween(black, {alpha: 0}, 1);
+						FlxTween.tween(camHUD, {alpha: 1}, 5);
+						
+						trace("Dave House");
+
+						dad.x = 50;
+						dad.y = 270;
+						health = 1;
+					case 1600:
+						switchDad('dave', dad.getPosition(), false);
+						dad.alpha = 0;
+						FlxTween.tween(dad, {alpha: 1}, 5);
+						FlxTween.tween(iconP2, {alpha: 1}, 5);
+					case 2176:
+						switchDad('dave-annoyed', dad.getPosition(), false);
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+					case 2752:
+						FlxTween.tween(dad, {alpha: 0}, 6);
+						FlxTween.tween(iconP2, {alpha: 0}, 6);
+					case 2823:
+						FlxTween.tween(black, {alpha: 5}, 1);
+						FlxTween.tween(camHUD, {alpha: 0}, 5);
+						makeInvisibleNotes(true);
+					case 2850:
+						for (sprite in daveHouseDream)
+							{
+								sprite.visible = false;
+							}
+						trace("Dave House is just a dream...");
+					// Tristan
+					case 2944:
+						for (sprite in tristanHouseDream)
+							{
+								sprite.visible = true;
+							}
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						makeInvisibleNotes(false);
+						FlxTween.tween(black, {alpha: 0}, 1);
+						FlxTween.tween(camHUD, {alpha: 1}, 5);
+						health = 1;
+						
+						trace("Tristan in Dave House!!!!!!!!!!!!!!!!!!!!");
+
+						dad.x = 50;
+						dad.y = 500;
+					case 3008:
+						switchDad('tristan-opponent', dad.getPosition(), false);
+						dad.alpha = 0;
+						FlxTween.tween(dad, {alpha: 1}, 5);
+						FlxTween.tween(iconP2, {alpha: 1}, 5);
+					case 4160:
+						FlxTween.tween(dad, {alpha: 0}, 6);
+						FlxTween.tween(iconP2, {alpha: 0}, 6);
+					case 4192:
+						FlxTween.tween(black, {alpha: 5}, 1);
+						makeInvisibleNotes(true);
+						FlxTween.tween(camHUD, {alpha: 0}, 5);						
+					case 4352:
+						for (sprite in tristanHouseDream)
+							{
+								sprite.visible = false;
+							}
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						makeInvisibleNotes(false);
+						FlxTween.tween(black, {alpha: 0}, 1);
+						FlxTween.tween(camHUD, {alpha: 1}, 5);
+							
+						trace("Tristan is dead!!!!!!!!!!!!!!!!!!!!");
+	
+						dad.x = 0;
+						dad.y = 0;
+						health = 1;
+
+						mcStarted = true;
+						cheatPart = true;
+					// Expunged
+					case 4416:
+						switchDad('bambi-3d', dad.getPosition(), false);
+						dad.alpha = 0;
+						FlxTween.tween(dad, {alpha: 1}, 5);
+						FlxTween.tween(iconP2, {alpha: 1}, 5);
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+					case 5280:
+						FlxTween.tween(camHUD, {alpha: 0}, 5);
+						makeInvisibleNotes(true);
+						cheatPart = false;
+					// Expunged Unfair
+					case 5376:
+						switchDad('bambi-unfair', dad.getPosition(), false);
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						weirdBG.loadGraphic(Paths.image('backgrounds/void/scarybg'));
+						weirdBG.setGraphicSize(Std.int(weirdBG.width * 3));
+						weirdBG.setPosition(0, 200);
+						health = 2;
+						unfairPart = true;
+
+						dad.x = 0;
+						dad.y = 0;
+
+						theFunne = true;
+						FlxTween.tween(camHUD, {alpha: 1}, 5);
+					case 5507:
+						defaultCamZoom += 0.2;
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('importumania_sub1'), 0.02, 0.6);
+					case 5517:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('importumania_sub2'), 0.02, 0.6);
+					case 5535:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('importumania_sub3'), 0.02, 0.6);
+					case 5553:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('importumania_sub4'), 0.02, 1.5);
+					case 5583:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('importumania_sub5'), 0.02, 0.6);
+					case 5595:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('importumania_sub6'), 0.02, 1);
+					case 5609:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('importumania_sub7'), 0.02, 1);
+					case 5632:
+						defaultCamZoom -= 0.2;
+						FlxTween.tween(black, {alpha: 0}, 1);
+						makeInvisibleNotes(false);
+						FlxTween.tween(camHUD, {alpha: 1}, 5);
+					case 6448:
+						FlxTween.tween(dad, {alpha: 0}, 6);
+						FlxTween.tween(iconP2, {alpha: 0}, 6);
+					case 6497:
+						FlxTween.tween(black, {alpha: 5}, 1);
+						makeInvisibleNotes(true);
+						FlxTween.tween(camHUD, {alpha: 0}, 5);
+					// 3D Dave
+					case 6656:
+						for (sprite in daveHouseDream)
+							{
+								sprite.visible = false;
+							}
+						trace("Dave s back");
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						makeInvisibleNotes(false);
+						FlxTween.tween(black, {alpha: 0}, 1);
+						FlxTween.tween(camHUD, {alpha: 1}, 5);
+						dad.x = 50;
+						dad.y = 80;
+
+						health = 1;
+						theFunne = false;
+						unfairPart = false;
+						mcStarted = false;
+					case 6688:
+						switchDad('dave-annoyed', dad.getPosition(), false);
+						dad.alpha = 0;
+						dad.x = 50;
+						dad.y = 270;
+						FlxTween.tween(dad, {alpha: 1}, 5);
+						FlxTween.tween(iconP2, {alpha: 1}, 5);
+					case 6784 | 6816 | 6848 | 6880:
+						FlxG.sound.play(Paths.sound('static'), 0.1);
+						switchDad('dave-angey', dad.getPosition(), false);
+						dad.x = 0;
+						dad.y = 0;
+
+						weirdBG.loadGraphic(Paths.image('backgrounds/void/redsky'));
+						weirdBG.setGraphicSize(Std.int(weirdBG.width * 3));						
+					case 6788:
+						switchDad('dave-annoyed', dad.getPosition(), false);
+						dad.playAnim('um', true);
+						dad.x = 50;
+						dad.y = 270;
+						weirdBG.loadGraphic(Paths.image('backgrounds/void/scarybg'));
+						weirdBG.setGraphicSize(Std.int(weirdBG.width * 3));
+					case 6821 | 6849 | 6881:
+						switchDad('dave-annoyed', dad.getPosition(), false);
+						dad.animation.play('scared', true);
+						dad.x = 50;
+						dad.y = 270;
+						weirdBG.loadGraphic(Paths.image('backgrounds/void/scarybg'));
+						weirdBG.setGraphicSize(Std.int(weirdBG.width * 3));
+					case 6912:
+						FlxG.sound.play(Paths.sound('static'), 0.1);
+						switchDad('dave-angey', dad.getPosition(), false);
+						dad.x = 0;
+						dad.y = 0;
+
+						weirdBG.loadGraphic(Paths.image('backgrounds/void/redsky'));
+						weirdBG.setGraphicSize(Std.int(weirdBG.width * 3));
+
+						shapeNoteWarning2 = new FlxSprite().loadGraphic(Paths.image("ui/shapeNoteWarning", 'shared'));
+						shapeNoteWarning2.antialiasing = false;
+						shapeNoteWarning2.scrollFactor.set();
+						shapeNoteWarning2.cameras = [camHUD];
+						shapeNoteWarning2.alpha = 0;
+						FlxTween.tween(shapeNoteWarning2, {alpha: 1}, 1);
+						add(shapeNoteWarning2);						
+					case 6944:
+						FlxTween.tween(shapeNoteWarning2, {alpha: 0}, 1);
+					case 7168 | 7296 | 7392 | 7680 | 7808 | 7904:
+						defaultCamZoom = 1.1;
+						shakeCam = true;
+						FlxG.camera.zoom += 0.2;
+
+						if (localFunny != CharacterFunnyEffect.Recurser)
+							{
+								shakeCam = true;
+								pre3dSkin = boyfriend.curCharacter;
+								for (char in [boyfriend, gf])
+								{
+									if (char.skins.exists('3d'))
+									{
+										if (char == boyfriend)
+										{
+											switchBF(char.skins.get('3d'), char.getPosition());
+										}
+										else if (char == gf)
+										{
+											switchGF(char.skins.get('3d'), char.getPosition());
+										}
+									}
+								}
+							}
+					case 7232 | 7360 | 7424 | 7744 | 7872 | 7936:
+						defaultCamZoom = 0.9;
+						shakeCam = false;
+						FlxG.camera.zoom += 0.2;
+
+						if (localFunny != CharacterFunnyEffect.Recurser)
+							{
+								if (boyfriend.curCharacter != pre3dSkin)
+								{
+									switchBF(pre3dSkin, boyfriend.getPosition());
+									switchGF(boyfriend.skins.get('gfSkin'), gf.getPosition());
+								}
+							}
+					case 8000:
+						FlxTween.tween(dad, {alpha: 0}, 6);
+						FlxTween.tween(iconP2, {alpha: 0}, 6);
+					case 8032:
+						FlxTween.tween(black, {alpha: 5}, 1);
+						makeInvisibleNotes(true);
+						FlxTween.tween(camHUD, {alpha: 0}, 5);
+					// Expunged True Form
+					case 8192:
+						defaultCamZoom = 0.5;
+						trace("Expunged true form lo");
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						makeInvisibleNotes(false);
+						FlxTween.tween(black, {alpha: 0}, 1);
+						FlxTween.tween(camHUD, {alpha: 1}, 5);
+						weirdBG.loadGraphic(Paths.image('backgrounds/void/exploit/creepyRoom'));
+						weirdBG.setGraphicSize(Std.int(weirdBG.width * 2));
+						weirdBG.setPosition(0, 200);
+						health = 1;
+						exploPart = true;
+						mcStarted = true;
+					case 8320:
+						switchDad('expunged', dad.getPosition(), false);
+						dad.alpha = 0;
+						FlxTween.tween(dad, {alpha: 1}, 5);
+						FlxTween.tween(iconP2, {alpha: 1}, 5);
+					case 8416:
+						defaultCamZoom += 0.2;
+						FlxTween.tween(black, {alpha: 0.6}, 1);
+						subtitleManager.addSubtitle(LanguageManager.getTextString('importumania_sub8'), 0.02, 0.6);
+					case 8426:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('importumania_sub9'), 0.02, 0.6);
+					case 8432:
+						subtitleManager.addSubtitle(LanguageManager.getTextString('importumania_sub10'), 0.02, 0.6);
+					case 8448:
+						defaultCamZoom -= 0.2;
+						FlxTween.tween(black, {alpha: 0}, 1);
+						makeInvisibleNotes(false);
+						FlxTween.tween(camHUD, {alpha: 1}, 5);
+					case 8704 | 8736 | 8832 | 8864:
+						shakeCam = true;
+						FlxG.camera.zoom += 0.2;
+					case 8728 | 8760 | 8856 | 8888:
+						shakeCam = false;
+						FlxG.camera.zoom += 0.2;
+					case 9216:
+						defaultCamZoom = 0.9;
+						for (sprite in bambiFarmDream)
+						{
+							sprite.visible = true;
+						}
+						switchDad('bambi-mad', dad.getPosition(), false);
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+
+						dad.x += 100;
+						dad.y += 500;
+					case 9280:
+						for (sprite in daveHouseDream)
+						{
+							sprite.visible = true;
+						}
+						for (sprite in bambiFarmDream)
+						{
+							sprite.visible = false;
+						}
+						switchDad('dave', dad.getPosition(), false);
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						dad.x = 50;
+						dad.y = 270;
+					case 9296:
+						for (sprite in daveHouseDream)
+						{
+							sprite.visible = false;
+						}
+						switchDad('dave-angey', dad.getPosition(), false);
+						FlxG.sound.play(Paths.sound('static'), 0.1);					
+					case 9344:
+						for (sprite in tristanHouseDream)
+						{
+							sprite.visible = true;
+						}
+						switchDad('tristan-opponent', dad.getPosition(), false);
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						dad.x = 50;
+						dad.y = 500;
+					case 9408:
+						for (sprite in tristanHouseDream)
+						{
+							sprite.visible = false;
+						}
+						switchDad('bambi-3d', dad.getPosition(), false);
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						cheatPart = true;
+						dad.x = 0;
+						dad.y = 0;						
+					case 9424:
+						switchDad('bambi-unfair', dad.getPosition(), false);
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						cheatPart = false;
+						unfairPart = true;
+					case 9472:
+						defaultCamZoom = 0.5;
+						switchDad('expunged', dad.getPosition(), false);
+						unfairPart = false;
+						exploPart = true;
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+
+						shakeCam = true;
+						FlxG.camera.zoom += 0.2;
+
+						modchart = ExploitationModchartType.Sex;
+						if (modchartoption) {
+							dadStrums.forEach(function(strum:StrumNote)
+							{
+								strum.resetX();
+							});
+							playerStrums.forEach(function(strum:StrumNote)
+							{
+								strum.resetX();
+							});
+						}
+
+						windowProperties = [
+							Application.current.window.x,
+							Application.current.window.y,
+							Application.current.window.width,
+							Application.current.window.height
+						];
+
+						#if windows
+						if (modchartoption) popupWindow();
+						#end
+					case 9504 | 9632:
+						shakeCam = true;
+						FlxG.camera.zoom += 0.2;
+					case 9528 | 9624 | 9656:
+						shakeCam = false;
+						FlxG.camera.zoom += 0.2;
+					case 9600:
+						shakeCam = true;
+						FlxG.camera.zoom += 0.2;
+
+						modchart = ExploitationModchartType.Figure8;
+						if (modchartoption) {
+						dadStrums.forEach(function(strum:StrumNote)
+						{
+							strum.resetX();
+						});
+						playerStrums.forEach(function(strum:StrumNote)
+							{
+								strum.resetX();
+							});
+						}
+					case 9856:
+						#if windows
+						if (window != null)
+						{
+							window.close();
+							expungedWindowMode = false;
+							window = null;
+							FlxTween.tween(Application.current.window, {x: windowProperties[0], y: windowProperties[1], width: windowProperties[2], height: windowProperties[3]}, 1, {ease: FlxEase.circInOut});
+							FlxTween.tween(iconP2, {alpha: 0}, 1, {ease: FlxEase.bounceOut});
+						}
+						#end
+
+						windowProperties = [
+							Application.current.window.x,
+							Application.current.window.y,
+							Application.current.window.width,
+							Application.current.window.height
+						];
+					case 9859:
+						PlatformUtil.sendWindowsNotification("ERROR", "expunged.dat is missing.");
+						FlxTween.tween(black, {alpha: 5}, 1);
+						FlxTween.tween(camHUD, {alpha: 0}, 5);
+						makeInvisibleNotes(true);
+				}
+		}
+		if (SONG.song.toLowerCase() == 'exploitation' && curStep % 8 == 0)
+		{
+			var fonts = ['arial', 'chalktastic', 'openSans', 'pkmndp', 'Koda135759-vmm2O', 'AnimeAce20BbBold-2Av', 'DeterminationSansWebRegular-369X',
+			'PonyvilleMedium-3636', 'SonicTurbo-K7D1D', 'SuperMarioDsRegular-Ea4R8', 'barcode', 'LCD Nova', 'vcr'];
+			var chosenFont = fonts[FlxG.random.int(0, fonts.length)];
+			scoreTxt.font = Paths.font('exploit/${chosenFont}.ttf');
+			timeTxt.font = Paths.font('exploit/${chosenFont}.ttf');
+			botplayTxt.font = Paths.font('exploit/${chosenFont}.ttf');
+		}
 		lastStepHit = curStep;
 		setOnLuas('curStep', curStep);
 		callOnLuas('onStepHit', []);
