@@ -2125,6 +2125,139 @@ class PlayState extends MusicBeatState
 		add(iconP2);
 		reloadHealthBarColors();
 
+		switch (curSong.toLowerCase())
+		{
+			case 'insanity' | 'insanity-2.5':
+				preload('backgrounds/void/redsky');
+				preload('backgrounds/void/redsky_insanity');
+			case 'polygonized' | 'polygonized-2.5':
+				preload('characters/3d_bf');
+				preload('characters/3d_gf');
+			case 'maze' | 'indignancy':
+				preload('spotLight');
+			case 'shredder':
+				preload('festival/bambi_shredder');
+				for (asset in ['bambi_spot', 'boyfriend_spot', 'ch_highway'])
+				{
+					preload('festival/shredder/${asset}');
+				}
+			case 'interdimensional':
+				preload('backgrounds/void/interdimensions/interdimensionVoid');
+				preload('backgrounds/void/interdimensions/spike');
+				preload('backgrounds/void/interdimensions/darkSpace');
+				preload('backgrounds/void/interdimensions/hexagon');
+				preload('backgrounds/void/interdimensions/nimbi/nimbiVoid');
+				preload('backgrounds/void/interdimensions/nimbi/nimbi_land');
+				preload('backgrounds/void/interdimensions/nimbi/nimbi');
+			case 'mealie':
+				preload('bambi/im_gonna_break_me_phone');
+			case 'recursed':
+				switch (boyfriend.curCharacter)
+				{
+					case 'dave':
+						preload('recursed/characters/Dave_Recursed');
+					case 'bambi-new':
+						preload('recursed/characters/Bambi_Recursed');
+					case 'tb-funny-man':
+						preload('recursed/characters/STOP_LOOKING_AT_THE_FILES');
+					case 'tristan' | 'tristan-golden':
+						preload('recursed/characters/TristanRecursed');
+					case 'dave-angey':
+						preload('recursed/characters/Dave_3D_Recursed');
+					case 'bambi-3d':
+						preload('recursed/characters/Cheating_Recursed');
+					default:
+						preload('recursed/Recursed_BF');
+				}
+				preload('recursed/bambiScroll');
+				preload('recursed/tristanScroll');
+				preload2(bambiBG);
+				preload2(tristanBG);
+			case 'exploitation':
+				preload('ui/glitch/glitchSwitch');
+				preload('backgrounds/void/exploit/cheater GLITCH');
+				preload('backgrounds/void/exploit/glitchyUnfairBG');
+				preload('backgrounds/void/exploit/expunged_chains');
+				preload('backgrounds/void/exploit/broken_expunged_chain');
+				preload('backgrounds/void/exploit/glitchy_cheating_2');
+			case 'bot-trot':
+				preload('backgrounds/bedroom/night/bed');
+				preload('backgrounds/bedroom/night/bg');
+				preload('playrobot/playrobot_shadow');
+			case 'escape-from-california':
+				for (spr in ['1500miles', '1000miles', '500miles', 'welcomeToGeorgia', 'georgia'])
+				{
+					preload('california/$spr');
+				}
+			case 'importumania':
+				preload('backgrounds/farm/gm_flatgrass');
+				preload('backgrounds/farm/orangey hills');
+				preload('backgrounds/farm/funfarmhouse');
+				preload('backgrounds/farm/cornFence');
+				preload('backgrounds/farm/cornFence2');
+				preload('backgrounds/farm/cornbag');
+				preload('backgrounds/farm/popeye');
+				preload('backgrounds/farm/sign');
+				preload('backgrounds/dave-house/gate');
+				preload('backgrounds/dave-house/grass bg');
+				preload('backgrounds/dave-house/grass');
+				preload('backgrounds/dave-house/hills');
+				preload('backgrounds/void/scarybg');
+				preload('backgrounds/void/redsky');
+				preload('ui/glitch/glitchSwitch');
+				preload('backgrounds/void/exploit/cheater GLITCH');
+				preload('backgrounds/void/exploit/glitchyUnfairBG');
+				preload('backgrounds/void/exploit/expunged_chains');
+				preload('backgrounds/void/exploit/broken_expunged_chain');
+				preload('backgrounds/void/exploit/glitchy_cheating_2');
+				preload('characters/3d_bf');
+				preload('characters/3d_gf');
+			case 'bananacore':
+				preload('eletric-cockadoodledoo/old-characters/Bartholemew');
+				preload('eletric-cockadoodledoo/old-characters/Cockey');
+				preload('eletric-cockadoodledoo/old-characters/Pooper');
+				preload('eletric-cockadoodledoo/old-characters/Kapi');
+				preload('eletric-cockadoodledoo/old-characters/PizzaMan');
+				preload('expunged/ExpungedFinal');
+				preload('bambi/bambiRemake');
+				preload('eletric-cockadoodledoo/indihome');
+				preload('eletric-cockadoodledoo/kapicuzsie_back');
+				preload('eletric-cockadoodledoo/kapicuzsie_front');
+				preload('eletric-cockadoodledoo/muffin');
+				preload('eletric-cockadoodledoo/sad_bambi');
+				preload('eletric-cockadoodledoo/shaggy from fnf 1');
+			case 'electric-cockaldoodledoo':
+				preload('eletric-cockadoodledoo/characters/Bartholemew');
+				preload('eletric-cockadoodledoo/characters/cockey');
+				preload('eletric-cockadoodledoo/characters/Pooper');
+				preload('eletric-cockadoodledoo/characters/Kapi');
+				preload('eletric-cockadoodledoo/characters/cuzsiee');
+				preload('eletric-cockadoodledoo/characters/PizzaMan');
+				preload('expunged/ExpungedFinal');
+				preload('bambi/bambiRemake');
+				preload('eletric-cockadoodledoo/indihome');
+				preload('eletric-cockadoodledoo/kapicuzsie_back');
+				preload('eletric-cockadoodledoo/kapicuzsie_front');
+				preload('eletric-cockadoodledoo/muffin');
+				preload('eletric-cockadoodledoo/sad_bambi');
+				preload('eletric-cockadoodledoo/shaggy from fnf 1');
+			case 'eletric-cockadoodledoo':
+				preload('eletric-cockadoodledoo/old-characters/Bartholemew');
+				preload('eletric-cockadoodledoo/old-characters/Cockey');
+				preload('eletric-cockadoodledoo/old-characters/Pooper');
+				preload('eletric-cockadoodledoo/old-characters/Kapi');
+				preload('eletric-cockadoodledoo/old-characters/cuzsiee');
+				preload('eletric-cockadoodledoo/old-characters/PizzaMan');
+				preload('expunged/ExpungedFinal');
+				preload('bambi/bambiRemake');
+				preload('eletric-cockadoodledoo/indihome');
+				preload('eletric-cockadoodledoo/kapicuzsie_back');
+				preload('eletric-cockadoodledoo/kapicuzsie_front');
+				preload('eletric-cockadoodledoo/muffin');
+				preload('eletric-cockadoodledoo/sad_bambi');
+				preload('eletric-cockadoodledoo/shaggy from fnf 1');
+		}
+
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
