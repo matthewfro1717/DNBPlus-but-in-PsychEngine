@@ -207,7 +207,9 @@ class Note extends FlxSprite
 				case 'phone':
 					reloadNote('phone');
 				case 'guitarHero':
-					reloadNote('guitarHero');
+					reloadNote('guitarHero');				
+				case 'shape':
+					reloadNote('shape');
 			}
 			noteType = value;
 		}
