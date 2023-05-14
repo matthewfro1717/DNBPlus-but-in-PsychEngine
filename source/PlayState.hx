@@ -309,7 +309,8 @@ class PlayState extends MusicBeatState
 	public static var instance:PlayState;
 	public var luaArray:Array<FunkinLua> = [];
 	private var luaDebugGroup:FlxTypedGroup<DebugLuaText>;
-	public var introSoundsSuffix:String = '';
+	public var introSoundsSuffix:String = ''
+	public var isDead:Bool = false; //Don't mess with this on Lua!!!;
 
 	// Debug buttons
 	private var debugKeysChart:Array<FlxKey>;
@@ -3592,7 +3593,6 @@ class PlayState extends MusicBeatState
 		#end
 	}
 
-	public var isDead:Bool = false; //Don't mess with this on Lua!!!
 	function doDeathCheck(?skipHealthCheck:Bool = false) {
 		if (((skipHealthCheck && instakillOnMiss) || health <= 0) && !practiceMode && !isDead)
 		{
