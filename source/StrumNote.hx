@@ -27,20 +27,6 @@ class StrumNote extends FlxSprite
 
 		ID = strumID;
 
-		// get the frames and stuff
-		switch (type)
-		{
-			case '3D':
-				frames = Paths.getSparrowAtlas('notes/NOTE_assets_3D');
-			case 'top10awesome':
-				frames = Paths.getSparrowAtlas('notes/OMGtop10awesomehi');
-			case 'gh':
-				frames = Paths.getSparrowAtlas('notes/NOTEGH_assets');
-			case 'shape':
-				frames = Paths.getSparrowAtlas('notes/NOTE_assets_Shape');
-			default:
-				frames = Paths.getSparrowAtlas('notes/NOTE_assets');
-		}
 		// actually load in the animation
 		switch (type)
 		{
