@@ -6264,6 +6264,19 @@ class PlayState extends MusicBeatState
 	}
 
 	var lastStepHit:Int = -1;
+	var black:FlxSprite;
+	var vineBoomTriggers:Array<Int> = [524, 588, 666, 720, 736, 752, 1088, 1092, 1096, 1100, 1152, 1168, 1172, 1174, 1176, 1180, 2113, 2144, 2176];
+	var newvineBoomTriggers:Array<Int> = [524, 588, 666];
+	var shag:FlxSprite;
+	var indihome:FlxSprite;
+	var jumpscare = new FlxSprite();
+	var noteWarning = new FlxSprite();
+	var nimbi = new FlxSprite();
+	var hideStuff:FlxSprite;
+	var sexDad:Character;
+	var shapeNoteWarning2 = new FlxSprite();
+	var curECCCharacter:String = "cockey";
+	var staticBG = new FlxSprite();
 	override function stepHit()
 	{
 		super.stepHit();
