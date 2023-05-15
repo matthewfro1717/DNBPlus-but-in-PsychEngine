@@ -309,7 +309,7 @@ class PlayState extends MusicBeatState
 	public static var instance:PlayState;
 	public var luaArray:Array<FunkinLua> = [];
 	private var luaDebugGroup:FlxTypedGroup<DebugLuaText>;
-	public var introSoundsSuffix:String = ''
+	public var introSoundsSuffix:String = '';
 	public var isDead:Bool = false;
 
 	// Debug buttons
