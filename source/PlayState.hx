@@ -310,7 +310,7 @@ class PlayState extends MusicBeatState
 	public var luaArray:Array<FunkinLua> = [];
 	private var luaDebugGroup:FlxTypedGroup<DebugLuaText>;
 	public var introSoundsSuffix:String = ''
-	public var isDead:Bool = false; //Don't mess with this on Lua!!!;
+	public var isDead:Bool = false;
 
 	// Debug buttons
 	private var debugKeysChart:Array<FlxKey>;
